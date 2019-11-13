@@ -1,0 +1,569 @@
+/* Спецификация */
+
+*,
+*body,
+*:after {
+  box-sizing: border-box;
+  font-family: "PT Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0px;
+}
+
+html {
+  font-size: 15px;
+}
+
+/* Начало блока main */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  min-height: 600px;
+  background-image: url("../../img/bg_up_block.jpg");
+  background-size: cover;
+  position: relative;
+}
+
+.main-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+.header {
+  display: flex;
+  height: 12vh;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.35);
+  z-index: 1;
+  position: relative;
+}
+
+.logo {
+  max-width: 70%;
+}
+
+.logo a {
+  padding-left: 1rem;
+}
+
+.logo a img {
+  width: 280px;
+  height: 120px;
+}
+
+.menu {
+  width: 50%;
+}
+
+/* Выплывающее меню начало */
+
+.m-menu {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  list-style: none;
+  font-size: 3rem;
+  line-height: 7rem;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: 0.3s;
+  transform: translateX(100%);
+}
+
+.m-menu_active {
+  transform: translateX(0%);
+}
+
+.m-menu__close-menu {
+  position: fixed;
+  right: 5rem;
+  top: 5rem;
+  margin: 0;
+  font-size: 5rem;
+  font-weight: 900;
+  list-style: none;
+}
+
+.m-menu__close-menu:hover {
+  cursor: pointer;
+}
+
+.m-menu_link {
+  text-decoration: none;
+  font-size: 3rem;
+  line-height: 7rem;
+  color: #000;
+}
+
+.m-menu_link:hover {
+  color: gold;
+  border: 1px solid #000;
+  border-radius: 100px;
+  padding: 10px 10px;
+  background-color: black;
+}
+
+.m-menu__authorize_btn {
+  border: 1px solid #000;
+  border-radius: 100px;
+  padding: 10px 10px;
+  color: black;
+}
+
+.m-menu__authorize_btn:hover {
+  background-color: rgb(250, 215, 0);
+  color: #000;
+}
+
+.m-menu-link-btn {
+  display: none;
+}
+
+.m-menu-link-btn img {
+  max-width: 5.5rem;
+  max-height: 5.5rem;
+  margin-right: 5vw;
+}
+
+/* Выплывающее меню конец */
+
+.menu ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.menu_link {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1.25rem;
+}
+
+.menu_link:hover {
+  color: rgb(250, 215, 0);
+  text-decoration: underline;
+}
+
+.authorize_btn {
+  margin-left: 5px;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  border-radius: 100px;
+}
+
+.authorize_btn:hover {
+  background-color: rgb(250, 215, 0);
+  color: #000;
+}
+
+.main-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  max-width: 60%;
+  color: rgba(250, 215, 0, 0.767);
+  text-shadow: black 1px 1px 1.5px;
+  z-index: 1;
+  position: relative;
+  margin-bottom: 20vh;
+}
+
+.main-text h1 {
+  font-size: 3rem;
+}
+
+.main-text p {
+  font-size: 1.5rem;
+}
+
+.main-text span {
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.main-text span::before {
+  content: "";
+  width: 100px;
+  height: 2px;
+  background-color: rgba(250, 215, 0, 0.767);
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.main-text span::after {
+  content: "";
+  width: 100px;
+  height: 2px;
+  background-color: rgba(250, 215, 0, 0.767);
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+/* Начало блока block-tariffs */
+
+.tariffs {
+  height: auto;
+  min-height: 700px;
+  background-image: url("../../img/bg_down_block.jpg");
+  background-size: cover;
+}
+
+.tariffs__header {
+  color: rgba(250, 215, 0, 0.767);
+  text-shadow: black 1px 1px 0.5px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.tariffs__header h2 {
+  font-size: 3rem;
+}
+
+.tariffs__header p {
+  font-size: 1.5rem;
+}
+
+.tariffs__price-tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.tariffs__price-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-shrink: 0.7;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.25rem;
+  border: 1px solid #000;
+  border-radius: 2rem;
+  transition: 0.2s;
+  background-color: rgba(255, 255, 255, 0.75);
+  margin: 10px 10px;
+  width:20vw;
+}
+
+.tariffs__price-tag:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 2px rgba(204, 204, 223, 0.71);
+}
+
+.tariffs__price-tag img {
+  width: 96px;
+  height: 96px;
+}
+
+/* Начало блока block-footer */
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.footer img {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+.footer a,
+h3 {
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: gold;
+}
+
+.footer__contacts-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.footer__social-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.vk-picture {
+  border-radius: 50px;
+}
+
+/*Блок формы авторизации*/
+
+.form-conteiner{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../img/authorize_reg_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.form-conteiner__form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 70px;
+  box-shadow: 0 4px 16px #000;
+  letter-spacing: 1px;
+  background-color: rgba(179, 178, 178, 0.95);
+  z-index: 2;
+}
+
+.form-conteiner__form__head{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.form-conteiner__form__head h2{
+border: 1px solid black;
+padding: 10px;
+border-radius: 100px;
+background-color: gold;
+}
+
+.form-conteiner__form__head img{
+max-width: 350px;
+max-height: 250px;
+}
+
+.form-conteiner__form__inputs{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10vh 10vw;
+}
+
+.form-conteiner__form__inputs-group{
+width: 20vw;
+position: relative;
+}
+
+.form-conteiner__form__inputs-groups_input{
+padding: 0 0 10px 0;
+margin: 20px 0px;
+border: none;
+border-bottom: 1px solid #000;
+background-color: transparent;
+outline: none;
+transition: 0.3s;
+width: 100%;
+font-size: 1.25rem;
+}
+
+.form-conteiner__form__inputs-groups_input:focus{
+border-bottom: 1px solid rgba(255, 215, 0, 0.9);
+}
+
+.form-conteiner__form__inputs-group__label{
+position: absolute;
+left: 0;
+top: -10px;
+z-index: 1;
+color: rgba(255, 215, 0, 0.9);
+text-shadow: black 0.5px 0.5px 0.1px;
+transition: 0.3s;
+font-size: 1.25rem;
+}
+
+.form-conteiner__form__inputs_input-btn{
+letter-spacing: 1px;
+font-size: 1.25rem;
+border: 1px solid #000;
+border-radius: 5px;
+color: #000;
+background-color: gold;
+outline: none;
+cursor: pointer;
+transition: 0.3s;
+margin-top: 5vh;
+padding: 2vh 2vw;
+}
+
+.form-conteiner__form__inputs_input-btn:focus,
+.form-conteiner__form__inputs_input-btn:hover{
+background-color: rgba(255, 215,0,0.7);
+}
+
+.form-conteiner__form__inputs-groups_input:focus ~ .form-conteiner__form__inputs-group__label{
+top: -10px;
+font-size: 1rem;
+color: rgba(255, 215, 0, 0.7);
+}
+
+/*Блок формы регистрации*/
+
+.form-reg-conteiner{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  background-image: url(../../img/authorize_reg_bg.jpg);
+  background-size: cover;
+  position: 50% 50%;
+}
+
+.form-reg-conteiner__info-block{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 30vw;
+  border-radius: 50px;
+  box-shadow: #000 0px 5px 5px 1px;
+  background-color: rgba(201, 200, 200, 0.9);
+  margin: 5vh 0;
+}
+
+.form-reg-conteiner__info-block__header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.form-reg-conteiner__info-block__header img{
+  max-width: 350px;
+  max-height: 250px;
+}
+
+.form-reg-conteiner__info-block__text{
+  font-size: 1.25rem;
+  text-align: justify;
+  padding: 10px 20px;
+}
+
+.form-reg-conteiner__form-reg{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 70px;
+  box-shadow: 0 4px 16px #000;
+  letter-spacing: 1px;
+  background-color: rgba(179, 178, 178, 0.95);
+  height: 90vh;
+  width: 30vw;
+  margin: 5vh 0;
+}
+
+.form-reg-conteiner-reg__form-reg__inputs-group{
+  width:20vw;
+  position: relative;
+}
+
+.form-reg-conteiner-reg__form-reg__inputs-groups__input{
+  padding: 0 0 10px 0;
+  margin: 15px 0px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color: transparent;
+  outline: none;
+  transition: 0.3s;
+  width: 100%;
+  font-size: 1.25rem;
+}
+
+.form-reg-conteiner-reg__form-reg__inputs-groups__input:focus{
+  border-bottom: 1px solid rgba(255, 215, 0, 0.9);
+}
+
+.form-reg-conteiner-reg__form-reg__inputs-group__label{
+  position: absolute;
+  left: 0;
+  top: -10px;
+  z-index: 1;
+  color: rgba(255, 215, 0, 0.9);
+  text-shadow: black 1px 1px 1px;
+  transition: 0.3s;
+  font-size: 1.25rem;
+}
+
+.form-reg-conteiner-reg__form-reg__inputs-groups__input:focus ~ .form-reg-conteiner-reg__form-reg__inputs-group__label{
+  top: -10px;
+  font-size: 1rem;
+  color: rgba(255, 215, 0, 0.7);
+}
+
+.form-reg-conteiner-reg__form-reg__inputs-group__position-radio{
+  margin-top: 1vh;
+  margin-bottom: 5vh;
+}
+
+.form-reg-conteiner-reg__form-reg__inputs-group__position-label{
+  color: rgba(255, 215, 0, 0.9);
+  text-shadow: black 1px 1px 1px;
+  font-size: 1.25rem;
+  
+}
+
+.form-reg-conteiner-reg__form-reg__inputs_input-btn{
+  letter-spacing: 1px;
+  font-size: 1.25rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  background-color: gold;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  padding: 2vh 2vw;
+}
+
+.form-reg-conteiner-reg__form-reg__inputs_input-btn:focus,
+.form-reg-conteiner-reg__form-reg__inputs_input-btn:hover{
+  background-color: rgba(255, 215,0,0.7);
+}
