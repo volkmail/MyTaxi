@@ -11,15 +11,13 @@ namespace MyTaxi.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
+            //Для обращения к базе создаем контекст
+            var context = IoC.MyTaxiDbContext;
+            //После чего проверем наличие базы, если ее нет, то автоматически создастся
+            context.Database.EnsureCreated();
+            
             return View();
         }
 
