@@ -1,8 +1,125 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "HomePage";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="m-menu">
+    <ul>
+        <li class="m-menu__close-menu">&times</li>
+        <li><a href="#" class="m-menu_link">Оформить поездку</a></li>
+        <li><a href="#" class="m-menu_link">Наш автопарк</a></li>
+        <li><a href="#" class="m-menu_link">О нас</a></li>
+        <li><a href="/AuthReg/Authorization" class="m-menu_link m-menu__authorize_btn">Вход</a></li>
+        <li><a href="/AuthReg/Registration" class="m-menu_link m-menu__authorize_btn">Регистрация</a></li>
+    </ul>
 </div>
+<div class="main">
+    <div class="main-overlay"></div>
+    <div class="header">
+        <div class="logo">
+            <a href="index.html"><img src="~/img/logo.png" alt="logo" /></a>
+        </div>
+
+        <a href="#" class="m-menu-link-btn">
+            <img src="~/img/menu.png" alt="" />
+        </a>
+
+        <div class="menu visible-lg">
+            <ul>
+                <li><a href="#" class="menu_link">Оформить поездку</a></li>
+                <li><a href="#" class="menu_link">Наш автопарк</a></li>
+                <li><a href="#" class="menu_link">О нас</a></li>
+                <li>
+                    <a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a>
+                </li>
+                <li>
+                    <a href="/AuthReg/Registration" class="menu_link authorize_btn">Регистрация</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-text">
+        <span>Добро пожаловать!</span>
+        <h1>Сервис заказа такси "MyTaxi"</h1>
+        <p>
+            Мы рады приветсвовать вас! Наши водители уже готовы! Просто оформите
+            поездку или ознакомьтесь с нашим сайтом.
+        </p>
+    </div>
+</div>
+<div class="tariffs">
+    <div class="tariffs__header">
+        <h2>Тарифы</h2>
+        <p>
+            Предлагаем вам ознакомиться с тарифами, которые мы можем вам
+            предлжить.
+        </p>
+    </div>
+    <div class="tariffs__price-tags">
+        <div class="tariffs__price-tag">
+            <img src="~/img/economy.png" alt="economy" />
+            <h4>Эконом</h4>
+            <span>от 105₽</span>
+            <p>~3 мин. Баланс цены и качетсва, но с удобством</p>
+        </div>
+        <div class="tariffs__price-tag">
+            <img src="~/img/comfort.png" alt="comfort" />
+            <h4>Комфорт</h4>
+            <span>от 160₽</span>
+            <p>~3 мин. Высокий уровень удобства и внимание к вам</p>
+        </div>
+        <div class="tariffs__price-tag">
+            <img src="~/img/buisness.png" alt="buisness" />
+            <h4>Бизнесс</h4>
+            <span>от 200₽</span>
+            <p>~10 мин. Просторный салон и внимание к мелочам</p>
+        </div>
+        <div class="tariffs__price-tag">
+            <img src="~/img/minivan.png" alt="minivan" />
+            <h4>Минивэн</h4>
+            <span>от 220₽</span>
+            <p>~2 мин. Много места для дружной компании и багажа</p>
+        </div>
+        <div class="tariffs__price-tag">
+            <img src="~/img/cargo.png" alt="cargo" />
+            <h4>Грузовой до 3,5т</h4>
+            <span>от 1200₽</span>
+            <p>Часто используется для перевозки вещей и мебели</p>
+        </div>
+        <div class="tariffs__price-tag">
+            <img src="~/img/bus.png" alt="bus" />
+            <h4>Автобус</h4>
+            <span>от 1100₽</span>
+            <p>Коллективные поездки. Лучше заказывать заранее</p>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer__contacts-info">
+        <div class="footer__contacts-info__contacts">
+            <img src="~/img/mobile-phone.png" alt="phone" />
+            <a href="#">89-90-57, 909-909</a>
+        </div>
+        <div class="footer__contacts-info__emails">
+            <img src="~/img/email.png" alt="email" />
+            <a href="#">MyTaxi@gmail.com</a>
+        </div>
+    </div>
+    <div class="footer__company-info">
+        <h3>Сервис заказа такси "MyTaxi"</h3>
+    </div>
+    <div class="footer__social-info">
+        <div class="footer_social-info">
+            <div class="footer_social-info__Instagram">
+                <img src="~/img/instagram.png" alt="instagram" />
+                <a href="#">@@my_taxi_topKHV</a>
+            </div>
+            <div class="footer_social-info__VK">
+                <img src="~/img/vk.png" class="vk-picture" alt="vk" />
+                <a href="#">vk.com/MyTaxi</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="~/js/m-menu.js"></script>
+}

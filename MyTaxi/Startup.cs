@@ -24,17 +24,13 @@ namespace MyTaxi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<MyTaxiDbContext>(options => 
-                //options.UseSqlServer("Server=.;Database=MyTaxiDb;Trusted_Connection=True;MultipleActiveResultSets=true"));
-
             services.AddControllersWithViews();
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)// IServiceProvider serviceProvider
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //IoCContainer.Provider = (ServiceProvider)serviceProvider;
 
             if (env.IsDevelopment())
             {
@@ -48,6 +44,8 @@ namespace MyTaxi
             }
 
             //app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {

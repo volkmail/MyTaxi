@@ -11,23 +11,13 @@ namespace MyTaxi.Controllers
 {
     public class HomeController : Controller
     {
-        //protected MyTaxiDbContext pContext = null;
-        //public HomeController(MyTaxiDbContext context) => pContext = context;
-
         public IActionResult Index()
         {
-            //Для обращения к базе создаем контекст
-            //var context = IoC.MyTaxiDbContext;
-            //После чего проверем наличие базы, если ее нет, то автоматически создастся
-            //context.Database.EnsureCreated();
-            //И дальше из контекста работаем с базой
-
             using (var context = new MyTaxiDbContext())
             {
                 context.Database.EnsureCreated();
             }
-            
-            
+           
             return View();
         }
 

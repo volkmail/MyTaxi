@@ -1,0 +1,68 @@
+﻿<div class="form-reg-conteiner">
+    <div class="form-reg-conteiner__info-block">
+        <div class="form-reg-conteiner__info-block__header">
+            <img src="~/img/logo.png" alt="logo">
+            <h2>Страница регистрации в сервисе заказа такси "MyTaxi"</h2>
+        </div>
+        <div class="form-reg-conteiner__info-block__text">
+            <p>
+                Мы рады приветсвовать вас в нашем сервисе заказа такси "MyTaxi". Для того чтобы стать нашим клиентом или водителем
+                вам необходимо пройти регострацию. Для этого просто заполните все поля и нажмите кнопку "Регистрация". Если все
+                пройдет успешно, то вы сразу же сможете воспользоваться нашим сервисом. Удачных поездок! Нам с вами по пути!
+            </p>
+        </div>
+    </div>
+    <form method="POST" class="form-reg-conteiner__form-reg">
+        <div class="form-reg-conteiner-reg__form-reg__inputs ">
+
+            <div class="form-reg-conteiner-reg__form-reg__inputs-group">
+                <input type="text" name="login" id="loginField" class="form-reg-conteiner-reg__form-reg__inputs-groups__input">
+                <label class="form-reg-conteiner-reg__form-reg__inputs-group__label">Логин</label>
+            </div>
+
+            <div class="form-reg-conteiner-reg__form-reg__inputs-group">
+                <input type="text" name="userSurname" id="userSurname" class="form-reg-conteiner-reg__form-reg__inputs-groups__input">
+                <label class="form-reg-conteiner-reg__form-reg__inputs-group__label">Фамилия</label>
+            </div>
+
+            <div class="form-reg-conteiner-reg__form-reg__inputs-group">
+                <input type="text" name="userName" id="userName" class="form-reg-conteiner-reg__form-reg__inputs-groups__input">
+                <label class="form-reg-conteiner-reg__form-reg__inputs-group__label">Имя </label>
+            </div>
+
+            <div class="form-reg-conteiner-reg__form-reg__inputs-group">
+                <input type="text" name="userPatronymic" id="userPatronymic" class="form-reg-conteiner-reg__form-reg__inputs-groups__input">
+                <label class="form-reg-conteiner-reg__form-reg__inputs-group__label">Отчество</label>
+            </div>
+
+            <div class="form-reg-conteiner-reg__form-reg__inputs-group">
+                <input type="text" name="phoneNumber" id="phoneNumber" class="form-reg-conteiner-reg__form-reg__inputs-groups__input">
+                <label class="form-reg-conteiner-reg__form-reg__inputs-group__label">Номер телефона</label>
+            </div>
+
+            <div class="form-reg-conteiner-reg__form-reg__inputs-group">
+                <label class="form-reg-conteiner-reg__form-reg__inputs-group__position-label">Водитель</label>
+                <input type="radio" name="driverSign" value="true" id="driverSign" class="form-reg-conteiner-reg__form-reg__inputs-group__position-radio">
+            </div>
+
+            <div class="form-reg-conteiner-reg__form-reg__inputs-group">
+                <input type="password" name="password" id="passwordField" class="form-reg-conteiner-reg__form-reg__inputs-groups__input">
+                <label class="form-reg-conteiner-reg__form-reg__inputs-group__label">Пароль</label>
+            </div>
+
+            <div class="form-reg-conteiner-reg__form-reg__inputs-group">
+                <input type="password" name="password" id="passwordFieldAgain" class="form-reg-conteiner-reg__form-reg__inputs-groups__input">
+                <label class="form-reg-conteiner-reg__form-reg__inputs-group__label">Подтверждение пароля</label>
+            </div>
+
+            <input type="submit" value="Зарегестрироваться" class="form-reg-conteiner-reg__form-reg__inputs_input-btn">
+        </div>
+    </form>
+</div>
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous">
+    </script>
+    <script src="~/js/jquery.maskedinput.js"></script>
+}

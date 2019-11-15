@@ -5,6 +5,50 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\main.css" />
+    <Content Remove="wwwroot\css\media.css" />
+    <Content Remove="wwwroot\img\authorize_reg_bg.jpg" />
+    <Content Remove="wwwroot\img\bg_down_block.jpg" />
+    <Content Remove="wwwroot\img\bg_up_block.jpg" />
+    <Content Remove="wwwroot\img\buisness.png" />
+    <Content Remove="wwwroot\img\bus.png" />
+    <Content Remove="wwwroot\img\cargo.png" />
+    <Content Remove="wwwroot\img\comfort.png" />
+    <Content Remove="wwwroot\img\economy.png" />
+    <Content Remove="wwwroot\img\email.png" />
+    <Content Remove="wwwroot\img\instagram.png" />
+    <Content Remove="wwwroot\img\logo.png" />
+    <Content Remove="wwwroot\img\menu.png" />
+    <Content Remove="wwwroot\img\minivan.png" />
+    <Content Remove="wwwroot\img\mobile-phone.png" />
+    <Content Remove="wwwroot\img\vk.png" />
+    <Content Remove="wwwroot\js\jquery.maskedinput.js" />
+    <Content Remove="wwwroot\js\m-menu.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\main.css" />
+    <None Include="wwwroot\css\media.css" />
+    <None Include="wwwroot\img\authorize_reg_bg.jpg" />
+    <None Include="wwwroot\img\bg_down_block.jpg" />
+    <None Include="wwwroot\img\bg_up_block.jpg" />
+    <None Include="wwwroot\img\buisness.png" />
+    <None Include="wwwroot\img\bus.png" />
+    <None Include="wwwroot\img\cargo.png" />
+    <None Include="wwwroot\img\comfort.png" />
+    <None Include="wwwroot\img\economy.png" />
+    <None Include="wwwroot\img\email.png" />
+    <None Include="wwwroot\img\instagram.png" />
+    <None Include="wwwroot\img\logo.png" />
+    <None Include="wwwroot\img\menu.png" />
+    <None Include="wwwroot\img\minivan.png" />
+    <None Include="wwwroot\img\mobile-phone.png" />
+    <None Include="wwwroot\img\vk.png" />
+    <None Include="wwwroot\js\jquery.maskedinput.js" />
+    <None Include="wwwroot\js\m-menu.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />

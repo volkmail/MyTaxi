@@ -1,7 +1,7 @@
 /* Спецификация */
 
 *,
-*body,
+body,
 *:after {
   box-sizing: border-box;
   font-family: "PT Sans", sans-serif;
@@ -26,9 +26,9 @@ html {
   align-items: center;
   height: 100vh;
   min-height: 600px;
-  background-image: url("../../img/bg_up_block.jpg");
+  background-image: url("../img/bg_up_block.jpg");
   background-size: cover;
-  position: relative;
+  position: 50% 50%;
 }
 
 .main-overlay {
@@ -233,7 +233,7 @@ html {
 .tariffs {
   height: auto;
   min-height: 700px;
-  background-image: url("../../img/bg_down_block.jpg");
+  background-image: url("../img/bg_down_block.jpg");
   background-size: cover;
 }
 
@@ -338,7 +338,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(../../img/authorize_reg_bg.jpg);
+  background-image: url(../img/authorize_reg_bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
@@ -442,14 +442,13 @@ color: rgba(255, 215, 0, 0.7);
 
 /*Блок формы регистрации*/
 
-.form-reg-conteiner{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100vw;
-  background-image: url(../../img/authorize_reg_bg.jpg);
-  background-size: cover;
-  position: 50% 50%;
+.form-reg-conteiner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    background-image: url(../img/authorize_reg_bg.jpg);
+    background-size: cover;
 }
 
 .form-reg-conteiner__info-block{
