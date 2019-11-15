@@ -17,15 +17,10 @@ namespace MyTaxi.Models
         public DbSet<User> Users { get; set; }
         #endregion
 
-        public MyTaxiDbContext(DbContextOptions<MyTaxiDbContext> options)
-            :base(options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
+            optionsBuilder
+                .UseSqlServer(@"Server=.;Database=MyTaxiDb;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
     }
 }

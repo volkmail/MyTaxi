@@ -12,9 +12,9 @@ namespace MyTaxi.Models
     {
         [Key]
         public int OrderID { get; set; }
-        public int DriverID { get; set; }
+        public int? DriverID { get; set; }
         public Driver Driver { get; set; }
-        public int ClientID {get;set;}
+        public int? ClientID {get;set;}
         public Client Client { get; set; }
         public int OrderSum { get; set; }
         public ICollection<History> History { get; set; }

@@ -24,16 +24,17 @@ namespace MyTaxi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MyTaxiDbContext>(options => 
-                options.UseSqlServer("Server=.;Database=MyTaxiDb;Trusted_Connection=True;MultipleActiveResultSets=true"));
+            //services.AddDbContext<MyTaxiDbContext>(options => 
+                //options.UseSqlServer("Server=.;Database=MyTaxiDb;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
             services.AddControllersWithViews();
-            services.AddMvc();
+
+            services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)// IServiceProvider serviceProvider
         {
-            IoCContainer.Provider = (ServiceProvider)serviceProvider;
+            //IoCContainer.Provider = (ServiceProvider)serviceProvider;
 
             if (env.IsDevelopment())
             {
@@ -45,18 +46,15 @@ namespace MyTaxi
                 
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
-            app.UseRouting();
+            //app.UseHttpsRedirection();
 
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}",
+                    defaults: new { controller = "Home", action = "Index" });
             });
         }
     }
