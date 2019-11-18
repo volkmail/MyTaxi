@@ -1,10 +1,3 @@
-/*
-    jQuery Masked Input Plugin
-    Copyright (c) 2007 - 2015 Josh Bush (digitalbush.com)
-    Licensed under the MIT license (http://digitalbush.com/projects/masked-input-plugin/#license)
-    Version: 1.4.1
-*/
-
 $(function() {
   $("#phoneNumber").mask("8(999) 999-99-99");
 });

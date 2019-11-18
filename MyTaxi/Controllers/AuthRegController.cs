@@ -20,5 +20,15 @@ namespace MyTaxi.Controllers
         {
             return View();
         }
+
+        public IActionResult RegistrationWay()
+        {
+            return View();
+        }
+
+        public IActionResult RegistrationDriver()
+        {
+            return View();
+        }
     }
 }

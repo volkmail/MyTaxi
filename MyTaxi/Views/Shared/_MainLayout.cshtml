@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="~/css/media.css">
 </head>
 <body>
+    @RenderSection("Header", false)
     @RenderBody()
+    @RenderSection("Footer", false)
     @RenderSection("Scripts", false)
 </body>
 </html>

@@ -1,21 +1,10 @@
 ﻿@{
     ViewData["Title"] = "HomePage";
 }
-<div class="m-menu">
-    <ul>
-        <li class="m-menu__close-menu">&times</li>
-        <li><a href="#" class="m-menu_link">Оформить поездку</a></li>
-        <li><a href="#" class="m-menu_link">Наш автопарк</a></li>
-        <li><a href="#" class="m-menu_link">О нас</a></li>
-        <li><a href="/AuthReg/Authorization" class="m-menu_link m-menu__authorize_btn">Вход</a></li>
-        <li><a href="/AuthReg/Registration" class="m-menu_link m-menu__authorize_btn">Регистрация</a></li>
-    </ul>
-</div>
-<div class="main">
-    <div class="main-overlay"></div>
+@section Header{ 
     <div class="header">
         <div class="logo">
-            <a href="index.html"><img src="~/img/logo.png" alt="logo" /></a>
+            <a href=""><img src="~/img/logo.png" alt="logo" /></a>
         </div>
 
         <a href="#" class="m-menu-link-btn">
@@ -31,11 +20,24 @@
                     <a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a>
                 </li>
                 <li>
-                    <a href="/AuthReg/Registration" class="menu_link authorize_btn">Регистрация</a>
+                    <a href="/AuthReg/RegistrationWay" class="menu_link authorize_btn">Регистрация</a>
                 </li>
             </ul>
         </div>
     </div>
+}
+<div class="m-menu">
+    <ul>
+        <li class="m-menu__close-menu">&times</li>
+        <li><a href="#" class="m-menu_link">Оформить поездку</a></li>
+        <li><a href="#" class="m-menu_link">Наш автопарк</a></li>
+        <li><a href="#" class="m-menu_link">О нас</a></li>
+        <li><a href="/AuthReg/Authorization" class="m-menu_link m-menu__authorize_btn">Вход</a></li>
+        <li><a href="/AuthReg/RegistrationWay" class="m-menu_link m-menu__authorize_btn">Регистрация</a></li>
+    </ul>
+</div>
+<div class="main">
+    <div class="main-overlay"></div>
     <div class="main-text">
         <span>Добро пожаловать!</span>
         <h1>Сервис заказа такси "MyTaxi"</h1>
@@ -92,6 +94,7 @@
         </div>
     </div>
 </div>
+@section Footer{ 
 <div class="footer">
     <div class="footer__contacts-info">
         <div class="footer__contacts-info__contacts">
@@ -119,6 +122,7 @@
         </div>
     </div>
 </div>
+}
 @section Scripts {
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script src="~/js/m-menu.js"></script>
