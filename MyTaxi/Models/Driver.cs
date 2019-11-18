@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyTaxi.Models
 {
@@ -21,6 +22,7 @@ namespace MyTaxi.Models
         public string DriverPhoneNumber { get; set; }
         public int CarID { get; set; }
         public Car Car { get; set; }
+        [ForeignKey("User")]
         public int UserID { get; set; }
         public User User { get; set; }
         public ICollection<Order> Orders { get; set; }

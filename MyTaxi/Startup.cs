@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
 using Microsoft.EntityFrameworkCore;
 using MyTaxi.Models;
 
@@ -24,6 +26,15 @@ namespace MyTaxi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".User.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(36000);
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddControllersWithViews();
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
@@ -46,6 +57,8 @@ namespace MyTaxi
             //app.UseHttpsRedirection();
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using MyTaxi.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace MyTaxi.Controllers
 {
@@ -13,11 +9,8 @@ namespace MyTaxi.Controllers
     {
         public IActionResult Index()
         {
-            using (var context = new MyTaxiDbContext())
-            {
-                context.Database.EnsureCreated();
-            }
-           
+            ViewData["login"] = HttpContext.Session.IsAvailable ? HttpContext.Session.GetString("login") : "Сеанс не существует";
+
             return View();
         }
 

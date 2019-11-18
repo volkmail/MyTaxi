@@ -11,7 +11,6 @@ namespace MyTaxi.Models
     public class User
     {
         [Key]
-        [ForeignKey("Driver")]
         public int UserID { get; set; }
         public string UserLogin { get; set; }
         public string UserPassword { get; set; }

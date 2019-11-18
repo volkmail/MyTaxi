@@ -17,6 +17,8 @@ namespace MyTaxi.Models
         public DbSet<User> Users { get; set; }
         #endregion
 
+        public MyTaxiDbContext() => Database.EnsureCreated();
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
