@@ -24,16 +24,14 @@ namespace MyTaxi.Controllers
             {
                 if (context.Users.Any())
                 {
-                    var compare_result = (from u in context.Users
-                                          where u.UserLogin == login && u.UserPassword == password
-                                          select u).ToList();
+                    var compare_result = context.Users.Where(u => u.UserLogin == login && u.UserPassword == password).ToList();
 
                     if (compare_result.Count() == 1)
                     {
-                        HttpContext.Session.SetString("login", login);
-                        HttpContext.Session.SetString("password", password);
-                        HttpContext.Session.SetString("isDriver", compare_result[0].DriverSign ? "yes" : "no");
-
+                        HttpContext.Session.SetInt32("userID", compare_result[0].UserID);
+                        HttpContext.Session.SetInt32("isDriver", compare_result[0].DriverSign ? 1 : 0);
+                        // пока не обязательно HttpContext.Session.SetString("login", login);
+                        // пока не обязательно HttpContext.Session.SetString("password", password);
                         return Redirect("/Home/Index");
                     }
                     else

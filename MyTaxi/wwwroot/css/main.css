@@ -1,7 +1,7 @@
 /* Спецификация */
 
 *,
-*body,
+body,
 *:after {
   box-sizing: border-box;
   font-family: "PT Sans", sans-serif;
@@ -67,6 +67,11 @@ html {
 
 .menu {
   width: 50%;
+}
+
+.menu ul li p {
+    color: aliceblue;
+    font-size: 1.25rem;
 }
 
 /* Выплывающее меню начало */
@@ -449,7 +454,7 @@ color: rgba(255, 215, 0, 0.7);
   width: 100vw;
   background-image: url(../../img/authorize_reg_bg.jpg);
   background-size: cover;
-  position: 50% 50%;
+ /*position: 50% 50%;*/ 
 }
 
 .form-reg-conteiner__info-block{

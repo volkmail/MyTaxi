@@ -1,11 +1,11 @@
-﻿@{
+﻿@model Dictionary<string,string>
+@{
     ViewData["Title"] = "HomePage";
 }
 @section Header{
     <div class="header">
         <div class="logo">
             <a href=""><img src="~/img/logo.png" alt="logo" /></a>
-            <p>@ViewData["login"]</p>
         </div>
 
         <a href="#" class="m-menu-link-btn">
@@ -14,15 +14,23 @@
 
         <div class="menu visible-lg">
             <ul>
-                <li><a href="#" class="menu_link">Оформить поездку</a></li>
+                @if (Model != null && Model["isDriver"] == "no")
+                {
+                    <li><a href="#" class="menu_link">Оформить поездку</a></li>
+                }
                 <li><a href="#" class="menu_link">Наш автопарк</a></li>
                 <li><a href="#" class="menu_link">О нас</a></li>
-                <li>
-                    <a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a>
-                </li>
-                <li>
-                    <a href="/AuthReg/RegistrationWay" class="menu_link authorize_btn">Регистрация</a>
-                </li>
+                @if (Model == null)
+                {
+                    <li><a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a></li>
+                    <li><a href="/AuthReg/RegistrationWay" class="menu_link authorize_btn">Регистрация</a></li>
+                }
+                else
+                {
+                    <li>
+                        <p class="menu__link"> Доброго времени суток <br> @Model["userSurname"] @Model["userName"] @Model["userPatronymic"]</p>
+                    </li>
+                }
             </ul>
         </div>
     </div>
@@ -33,8 +41,11 @@
         <li><a href="#" class="m-menu_link">Оформить поездку</a></li>
         <li><a href="#" class="m-menu_link">Наш автопарк</a></li>
         <li><a href="#" class="m-menu_link">О нас</a></li>
-        <li><a href="/AuthReg/Authorization" class="m-menu_link m-menu__authorize_btn">Вход</a></li>
-        <li><a href="/AuthReg/RegistrationWay" class="m-menu_link m-menu__authorize_btn">Регистрация</a></li>
+        @if (Model == null)
+        {
+            <li><a href="/AuthReg/Authorization" class="m-menu_link m-menu__authorize_btn">Вход</a></li>
+            <li><a href="/AuthReg/RegistrationWay" class="m-menu_link m-menu__authorize_btn">Регистрация</a></li>
+        }
     </ul>
 </div>
 <div class="main">
