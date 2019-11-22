@@ -747,3 +747,44 @@ color: rgba(255, 215, 0, 0.7);
 .way-conteiner__from__way:hover{
   background-color: rgb(255, 217, 0);
 }
+
+/*Блок удачной регистрации*/
+
+.suc-conteiner {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.534);
+}
+
+.suc-conteiner__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 100px;
+  padding: 2vh 3vw;
+}
+
+.suc-conteiner__block__btn {
+  letter-spacing: 1px;
+  font-size: 1.25rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  background-color: gold;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  padding: 2vh 2vw;
+}
+
+.suc-conteiner__block__btn:hover,
+.suc-conteiner__block__btn:focus{
+    background-color: rgba(255, 215, 0, 0.7);
+}

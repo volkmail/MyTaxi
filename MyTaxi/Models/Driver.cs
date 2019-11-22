@@ -20,6 +20,7 @@ namespace MyTaxi.Models
         public string DriverPatronymic { get; set; }
         [MaxLength(20)]
         public string DriverPhoneNumber { get; set; }
+        [ForeignKey("Car")]
         public int CarID { get; set; }
         public Car Car { get; set; }
         [ForeignKey("User")]

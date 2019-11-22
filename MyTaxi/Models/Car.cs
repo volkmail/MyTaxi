@@ -6,7 +6,6 @@ namespace MyTaxi.Models
     public class Car
     {
         [Key]
-        [ForeignKey("Driver")]
         public int CarId { get; set; }
         [MaxLength(6)]
         public string CarNumber { get; set; } //гос номер машины

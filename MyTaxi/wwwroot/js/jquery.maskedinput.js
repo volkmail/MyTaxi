@@ -1,5 +1,6 @@
-$(function() {
-  $("#phoneNumber").mask("8(999) 999-99-99");
+$(function () {
+    $("#phoneNumber").mask("8(999) 999-99-99");
+    $("#carNumber").mask("a999aa");
 });
 
 !(function(factory) {
@@ -15,7 +16,7 @@ $(function() {
   ($.mask = {
     definitions: {
       "9": "[0-9]",
-      a: "[A-Za-z]",
+      "a": "[A-Za-z]",
       "*": "[A-Za-z0-9]"
     },
     autoclear: !0,
