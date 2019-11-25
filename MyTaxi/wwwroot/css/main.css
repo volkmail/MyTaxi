@@ -388,9 +388,24 @@ align-items: center;
 padding: 10vh 10vw;
 }
 
-.form-conteiner__form__inputs-group{
-width: 20vw;
-position: relative;
+.form-conteiner__form__inputs a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 1.25rem;
+}
+
+.form-conteiner__form__inputs h2 {
+    color: red;
+}
+
+.form-conteiner__form__inputs a:hover {
+    color: rgb(250, 215, 0);
+    text-decoration: underline;
+}
+
+.form-conteiner__form__inputs-group {
+    width: 20vw;
+    position: relative;
 }
 
 .form-conteiner__form__inputs-groups_input{
@@ -431,6 +446,7 @@ outline: none;
 cursor: pointer;
 transition: 0.3s;
 margin-top: 5vh;
+margin-bottom: 2vh;
 padding: 2vh 2vw;
 }
 
@@ -788,3 +804,127 @@ color: rgba(255, 215, 0, 0.7);
 .suc-conteiner__block__btn:focus{
     background-color: rgba(255, 215, 0, 0.7);
 }
+
+/*Блок для History*/
+
+.body-history {
+    min-height: 77vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(/img/bg_down_block.jpg);
+    background-size: cover;
+}
+
+.body-history__info-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 1.25rem;
+    border: 1px solid #000;
+    border-radius: 2rem;
+    transition: 0.2s;
+    background-color: rgba(255, 255, 255, 0.75);
+    margin: 10px 10px;
+    width: 50vw;
+}
+
+.body-history__info-block__body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.body-history__info-block__header {
+    text-align: center;
+}
+
+.body-history__info-block p {
+    padding: 0.5rem 0.5rem;
+    margin: 0.1rem 0;
+}
+
+.body-history__info-block h3 {
+    padding: 0.5rem 0.5rem;
+    margin: 0.2rem 0;
+    color: #000;
+    text-shadow: 1px 1px 1px gold;
+}
+
+.body-history__info-block:hover {
+    box-shadow: 0px 0px 10px 2px rgba(204, 204, 223, 0.71);
+}
+
+/*Блок для Trips*/
+
+.body-trip {
+    min-height: 77vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(/img/bg_down_block.jpg);
+    background-size: cover;
+}
+
+.body-trip__info-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 1.25rem;
+    border: 1px solid #000;
+    border-radius: 2rem;
+    transition: 0.2s;
+    background-color: rgba(255, 255, 255, 0.75);
+    margin: 10px 10px;
+    width: 50vw;
+}
+
+.body-trip__info-block__body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.body-trip__info-block__header {
+    text-align: center;
+}
+
+.body-trip__info-block p {
+    padding: 0.5rem 0.5rem;
+    margin: 0.1rem 0;
+}
+
+.body-trip__info-block h3 {
+    padding: 0.5rem 0.5rem;
+    margin: 0.2rem 0;
+    color: #000;
+    text-shadow: 1px 1px 1px gold;
+}
+
+.body-trip__info-block:hover {
+    box-shadow: 0px 0px 10px 2px rgba(204, 204, 223, 0.71);
+}
+
+.body-trip_info-block__btn__go {
+    letter-spacing: 1px;
+    font-size: 1.25rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    background-color: gold;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 2vh 2vw;
+}
+
+    .body-trip_info-block__btn__go:hover,
+    .body-trip_info-block__btn__go:focus {
+        background-color: rgba(255, 215, 0, 0.7);
+    }

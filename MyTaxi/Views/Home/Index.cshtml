@@ -17,9 +17,12 @@
                 @if (Model != null && Model["isDriver"] == "no")
                 {
                     <li><a href="#" class="menu_link">Оформить поездку</a></li>
+                    <li><a href="/History/History" class="menu_link">История поездок</a></li>
                 }
-                <li><a href="#" class="menu_link">Наш автопарк</a></li>
-                <li><a href="#" class="menu_link">О нас</a></li>
+                else if (Model != null && Model["isDriver"] == "yes")
+                {
+                    <li><a href="/Trips/AwaitingTrips" class="menu_link">Взять заказ</a></li> 
+                }
                 @if (Model == null)
                 {
                     <li><a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a></li>
@@ -28,7 +31,7 @@
                 else
                 {
                     <li>
-                        <p class="menu__link"> Доброго времени суток <br> @Model["userSurname"] @Model["userName"] @Model["userPatronymic"]</p>
+                        <p class="menu__link">@Model["userSurname"] @Model["userName"] @Model["userPatronymic"]</p>
                     </li>
                 }
             </ul>
@@ -37,14 +40,19 @@
 }
 <div class="m-menu">
     <ul>
-        <li class="m-menu__close-menu">&times</li>
-        <li><a href="#" class="m-menu_link">Оформить поездку</a></li>
-        <li><a href="#" class="m-menu_link">Наш автопарк</a></li>
-        <li><a href="#" class="m-menu_link">О нас</a></li>
+        @if (Model != null && Model["isDriver"] == "no")
+        {
+            <li><a href="#" class="menu_link">Оформить поездку</a></li>
+            <li><a href="/History/History" class="menu_link">История поездок</a></li>
+        }
+        else
+        {
+            <li><a href="/Trips/AwaitingTrips" class="menu_link">Взять заказ</a></li> 
+        }
         @if (Model == null)
         {
-            <li><a href="/AuthReg/Authorization" class="m-menu_link m-menu__authorize_btn">Вход</a></li>
-            <li><a href="/AuthReg/RegistrationWay" class="m-menu_link m-menu__authorize_btn">Регистрация</a></li>
+            <li><a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a></li>
+            <li><a href="/AuthReg/RegistrationWay" class="menu_link authorize_btn">Регистрация</a></li>
         }
     </ul>
 </div>
@@ -134,8 +142,4 @@
             </div>
         </div>
     </div>
-}
-@section Scripts {
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="~/js/m-menu.js"></script>
 }

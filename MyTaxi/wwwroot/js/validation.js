@@ -37,7 +37,7 @@ function validation() {
             }
         }
     }
-    if (password != passwordAgain) {
+    if (password.value != passwordAgain.value) {
         alert("Пароль и подтверждение пароля не совпадают!");
         password.style.border = "2px solid red";
         passwordAgain.style.border = "2px solid red";

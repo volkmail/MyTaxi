@@ -35,7 +35,10 @@ namespace MyTaxi.Controllers
                         return Redirect("/Home/Index");
                     }
                     else
+                    {
+                        ViewData["FailAuth"] = "Fail";
                         return View();
+                    }
                 }
                 return View();
             }
