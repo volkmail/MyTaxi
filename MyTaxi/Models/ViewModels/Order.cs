@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace MyTaxi.Models.ViewModels
 {
-    public class ClientRegistrationInit : UserData
+    public class Order : UserData
     {
-        public bool Success { get; set; }
-        public bool JustInit { get; set; }
+        public List<CarClass> carClassesToPage { get; set; }
     }
 }

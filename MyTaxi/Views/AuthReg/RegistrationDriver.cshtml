@@ -13,7 +13,9 @@
         </div>
     </div>
 }
-<div class="f-c">
+else
+{
+    <div class="f-c">
         <div class="f-c__i-b">
             <h2>Регистрация водителя в сервисе заказа такси "MyTaxi"</h2>
             <p>
@@ -22,7 +24,7 @@
             </p>
         </div>
 
-         <form method="POST" action="" onsubmit="return validation();" class="f-c__form">
+        <form method="POST" action="" onsubmit="return validation();" class="f-c__form">
             <div class="f-c__form__inputs-driver">
                 <div class="f-c__form__inputs-driver__input">
                     <input type="text" name="login" id="loginField" class="f-c__form__inputs-driver__input-field" required maxlength="20">
@@ -105,13 +107,13 @@
                 <input type="submit" value="Зарегестрироваться" class="f-c__form__inputs-car__input-btn">
             </div>
         </form>
-</div>
-
+    </div>
+}
 @section Scripts {
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-        crossorigin="anonymous">
-</script>
-<script src="~/js/jquery.maskedinput.js"></script>
-<script src="~/js/validation.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous">
+    </script>
+    <script src="~/js/jquery.maskedinput.js"></script>
+    <script src="~/js/validation.js"></script>
 }

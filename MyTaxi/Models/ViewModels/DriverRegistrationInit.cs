@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyTaxi.Models.ViewModels
 {
-    public class DriverRegistrationInit
+    public class DriverRegistrationInit : UserData
     {
         public List<CarClass> CarClasses { get; set; }
         public List<CarColor> CarColors { get; set; }

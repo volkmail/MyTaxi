@@ -11,43 +11,50 @@ namespace MyTaxi.Controllers
     {
         public IActionResult Index()
         {
+            MyTaxi.Models.ViewModels.HomePage homePageData = new Models.ViewModels.HomePage();
+
+            #region Fill User Data
+
             if (HttpContext.Session.TryGetValue("userID", out byte[] result))
             {
                 using (var context = new MyTaxiDbContext())
                 {
                     List<Driver> dataToDictionaryDriver;
                     List<Client> dataToDictionaryClient;
-                    Dictionary<string, string> userData = null;
 
                     if (HttpContext.Session.GetInt32("isDriver") == 1)
                     {
-                        userData = new Dictionary<string, string>();
                         dataToDictionaryDriver = context.Drivers.Where(d => d.UserID == HttpContext.Session.GetInt32("userID")).ToList();
                         if (dataToDictionaryDriver.Count() == 1)
                         {
-                            userData.Add("isDriver", "yes");
-                            userData.Add("userName", dataToDictionaryDriver[0].DriverName);
-                            userData.Add("userSurname", dataToDictionaryDriver[0].DriverSurname);
-                            userData.Add("userPatronymic", dataToDictionaryDriver[0].DriverPatronymic);
+                            homePageData.isAuthorize = true;
+                            homePageData.isDriver = true;
+                            homePageData.userName = dataToDictionaryDriver[0].DriverName;
+                            homePageData.userSurname = dataToDictionaryDriver[0].DriverSurname;
+                            homePageData.userPatronymic = dataToDictionaryDriver[0].DriverPatronymic;
                         }
                     }
                     else
                     {
-                        userData = new Dictionary<string, string>();
                         dataToDictionaryClient = context.Clients.Where(d => d.UserID == HttpContext.Session.GetInt32("userID")).ToList();
                         if (dataToDictionaryClient.Count() == 1)
                         {
-                            userData.Add("isDriver", "no");
-                            userData.Add("userName", dataToDictionaryClient[0].ClientName);
-                            userData.Add("userSurname", dataToDictionaryClient[0].ClientSurname);
-                            userData.Add("userPatronymic", dataToDictionaryClient[0].ClientPatronymic);
+                            homePageData.isAuthorize = true;
+                            homePageData.isDriver = false;
+                            homePageData.userName = dataToDictionaryClient[0].ClientName;
+                            homePageData.userSurname = dataToDictionaryClient[0].ClientSurname;
+                            homePageData.userPatronymic = dataToDictionaryClient[0].ClientPatronymic;
                         }
                     }
-                    return View(userData);
                 }
             }
             else
-                return View();
+            {
+                homePageData.isAuthorize = false;
+            }
+            #endregion
+
+            return View(homePageData);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

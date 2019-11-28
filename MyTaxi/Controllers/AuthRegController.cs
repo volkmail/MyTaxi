@@ -21,6 +21,7 @@ namespace MyTaxi.Controllers
         [HttpPost]
         public IActionResult Authorization(string login, string password)
         {
+
             using (var context = new MyTaxiDbContext())
             {
                 if (context.Users.Any())
@@ -54,12 +55,18 @@ namespace MyTaxi.Controllers
         {
             if (clientRegistration != null)
             {
+                ClientRegistrationInit cri = new ClientRegistrationInit();
+
                 using (var context = new MyTaxiDbContext())
                 {
                     if (context.Users.Where(u => u.UserLogin == clientRegistration.login).Any())
                     {
+                        cri.isAuthorize = false;
+                        cri.JustInit = true;
+                        cri.Success = false;
+
                         ViewData["ExistLogin"] = "Этот логин уже занят другим пользователем !";
-                        return View();
+                        return View(cri);
                     }
 
                     context.Users.Add(new User
@@ -71,7 +78,8 @@ namespace MyTaxi.Controllers
 
                     context.SaveChanges();
 
-                    context.Clients.Add(new Client { 
+                    context.Clients.Add(new Client
+                    {
                         ClientName = clientRegistration.userName,
                         ClientSurname = clientRegistration.userSurname,
                         ClientPatronymic = clientRegistration.userPatronymic,
@@ -81,9 +89,9 @@ namespace MyTaxi.Controllers
 
                     context.SaveChanges();
 
-                    ClientRegistrationInit cri = new ClientRegistrationInit();
                     cri.Success = true;
                     cri.JustInit = false;
+                    cri.isAuthorize = false;
                     return View(cri);
                 }
             }
@@ -100,17 +108,17 @@ namespace MyTaxi.Controllers
 
         public IActionResult RegistrationDriver()
         {
+            DriverRegistrationInit dri = new DriverRegistrationInit();
+
             using (var context = new MyTaxiDbContext())
             {
-                DriverRegistrationInit dri = new DriverRegistrationInit();
-
-                dri.CarClasses = context.CarClasses.ToList();
                 dri.CarColors = context.CarColors.ToList();
-                dri.Success = false;
+                dri.CarClasses = context.CarClasses.ToList();
                 dri.JustInit = true;
-
-                return View(dri);
+                dri.Success = false;
+                dri.isAuthorize = false;
             }
+            return View(dri);
         }
 
         [HttpPost]
@@ -126,9 +134,10 @@ namespace MyTaxi.Controllers
                     dri.CarColors = context.CarColors.ToList();
 
                     if (context.Users.Where(u => u.UserLogin == driverRegistration.login).Any())
-                    {                   
+                    {
                         dri.Success = false;
                         dri.JustInit = true;
+                        dri.isAuthorize = false;
 
                         ViewData["ExistLogin"] = "Этот логин уже занят другим пользователем !";
                         return View(dri);
@@ -168,6 +177,7 @@ namespace MyTaxi.Controllers
 
                     dri.Success = true;
                     dri.JustInit = false;
+                    dri.isAuthorize = false;
 
                     return View(dri);
                 }
@@ -183,6 +193,7 @@ namespace MyTaxi.Controllers
                     dri.CarColors = context.CarColors.ToList();
                     dri.Success = false;
                     dri.JustInit = true;
+                    dri.isAuthorize = false;
 
                     return View(dri);
                 }

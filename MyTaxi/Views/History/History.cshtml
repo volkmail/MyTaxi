@@ -3,61 +3,6 @@
 @{
     ViewData["Title"] = "History";
 }
-@section Header{
-    <div class="header">
-        <div class="logo">
-            <a href=""><img src="~/img/logo.png" alt="logo" /></a>
-        </div>
-
-        <a href="#" class="m-menu-link-btn">
-            <img src="~/img/menu.png" alt="" />
-        </a>
-
-        <div class="menu visible-lg">
-            <ul>
-                @if (Model != null && Model.isAuthorize == true && Model.isDriver == false)
-                {
-                    <li><a href="#" class="menu_link">Оформить поездку</a></li>
-                    <li><a href="/History/History" class="menu_link">История поездок</a></li>
-                }
-                else if (Model != null && Model.isAuthorize == true && Model.isDriver == true)
-                {
-                    <li><a href="/Trips/AwaitingTrips" class="menu_link">Взять заказ</a></li>
-                }
-                @if (Model == null || Model.isAuthorize == false)
-                {
-                    <li><a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a></li>
-                    <li><a href="/AuthReg/RegistrationWay" class="menu_link authorize_btn">Регистрация</a></li>
-                }
-                else
-                {
-                    <li>
-                        <p class="menu__link">@Model.userSurname @Model.userName @Model.userPatronymic</p>
-                    </li>
-                }
-            </ul>
-        </div>
-    </div>
-}
-<div class="m-menu">
-    <ul>
-        @if (Model != null && Model.isAuthorize == true && Model.isDriver == false)
-        {
-            <li><a href="#" class="menu_link">Оформить поездку</a></li>
-            <li><a href="/History/History" class="menu_link">История поездок</a></li>
-        }
-        else if (Model != null && Model.isAuthorize == true && Model.isDriver == true)
-        {
-            <li><a href="/Trips/AwaitingTrips" class="menu_link">Взять заказ</a></li>
-        }
-        @if (Model == null || Model.isAuthorize == false)
-        {
-            <li><a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a></li>
-            <li><a href="/AuthReg/RegistrationWay" class="menu_link authorize_btn">Регистрация</a></li>
-        }
-    </ul>
-</div>
-
 <div class="body-history">
     <div class="body-history__info-block">
         <div class="body-history__info-block__header">
@@ -114,32 +59,3 @@
         </div>
     </div>
 </div>
-@section Footer{
-    <div class="footer">
-        <div class="footer__contacts-info">
-            <div class="footer__contacts-info__contacts">
-                <img src="../img/mobile-phone.png" alt="phone" />
-                <a href="#">89-90-57, 909-909</a>
-            </div>
-            <div class="footer__contacts-info__emails">
-                <img src="../img/email.png" alt="email" />
-                <a href="#">MyTaxi@gmail.com</a>
-            </div>
-        </div>
-        <div class="footer__company-info">
-            <h3>Сервис заказа такси "MyTaxi"</h3>
-        </div>
-        <div class="footer__social-info">
-            <div class="footer_social-info">
-                <div class="footer_social-info__Instagram">
-                    <img src="../img/instagram.png" alt="instagram" />
-                    <a href="#">@@my_taxi_topKHV</a>
-                </div>
-                <div class="footer_social-info__VK">
-                    <img src="../img/vk.png" class="vk-picture" alt="vk" />
-                    <a href="#">vk.com/MyTaxi</a>
-                </div>
-            </div>
-        </div>
-    </div>
-}
