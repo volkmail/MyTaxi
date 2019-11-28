@@ -56,6 +56,12 @@ namespace MyTaxi.Controllers
             {
                 using (var context = new MyTaxiDbContext())
                 {
+                    if (context.Users.Where(u => u.UserLogin == clientRegistration.login).Any())
+                    {
+                        ViewData["ExistLogin"] = "Этот логин уже занят другим пользователем !";
+                        return View();
+                    }
+
                     context.Users.Add(new User
                     {
                         UserLogin = clientRegistration.login,
@@ -83,7 +89,7 @@ namespace MyTaxi.Controllers
             }
             else
             {
-                return Redirect("/AuthReg/Authorization");
+                return View();
             }
         }
 
@@ -114,11 +120,25 @@ namespace MyTaxi.Controllers
             {
                 using (var context = new MyTaxiDbContext())
                 {
+                    DriverRegistrationInit dri = new DriverRegistrationInit();
+
+                    dri.CarClasses = context.CarClasses.ToList();
+                    dri.CarColors = context.CarColors.ToList();
+
+                    if (context.Users.Where(u => u.UserLogin == driverRegistration.login).Any())
+                    {                   
+                        dri.Success = false;
+                        dri.JustInit = true;
+
+                        ViewData["ExistLogin"] = "Этот логин уже занят другим пользователем !";
+                        return View(dri);
+                    }
+
                     context.Users.Add(new User
                     {
                         UserLogin = driverRegistration.login,
                         UserPassword = driverRegistration.password,
-                        DriverSign = false
+                        DriverSign = true
                     });
 
                     context.Cars.Add(new Car
@@ -146,10 +166,6 @@ namespace MyTaxi.Controllers
 
                     context.SaveChanges();
 
-                    DriverRegistrationInit dri = new DriverRegistrationInit();
-
-                    dri.CarClasses = context.CarClasses.ToList();
-                    dri.CarColors = context.CarColors.ToList();
                     dri.Success = true;
                     dri.JustInit = false;
 

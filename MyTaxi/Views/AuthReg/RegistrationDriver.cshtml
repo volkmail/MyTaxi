@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "RegDriver";
 }
-@if (Model.JustInit == false && Model.Success == true)
+@if (Model != null && Model.JustInit == false && Model.Success == true)
 {
     <div class="suc-conteiner">
         <div class="suc-conteiner__block">
@@ -96,11 +96,15 @@
                         }
                     </datalist>
                 </div>
-
+                @if (ViewData["ExistLogin"] != null)
+                {
+                    <div>
+                        <h3>@ViewData["ExistLogin"]</h3>
+                    </div>
+                }
                 <input type="submit" value="Зарегестрироваться" class="f-c__form__inputs-car__input-btn">
             </div>
         </form>
-    }
 </div>
 
 @section Scripts {

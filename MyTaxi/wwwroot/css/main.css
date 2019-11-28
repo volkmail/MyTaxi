@@ -591,17 +591,22 @@ color: rgba(255, 215, 0, 0.7);
   background-color: rgba(255, 215,0,0.7);
 }
 
-/*Форма регистрации водителя*/
+.form-reg-conteiner-reg__form-reg__inputs h3 {
+    color: red;
+    text-align: center;
+    max-width: 20vw;
+}
 
-.f-c{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background-image: url(/img/authorize_reg_bg.jpg);
-  background-size: cover;
-  min-width: 100vw;
-  min-height: 100vh;
+/*Форма регистрации водителя*/
+.f-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(/img/authorize_reg_bg.jpg);
+    background-size: cover;
+    min-width: 100vw;
+    min-height: 100vh;
 }
 
 .f-c__i-b{
@@ -722,16 +727,21 @@ color: rgba(255, 215, 0, 0.7);
   background-color: rgba(255, 215,0,0.7);
 }
 
+.f-c__form h3{
+    color:red;
+    text-align:center;
+    max-width:20vw;
+}
 /*Страница выбора роли для регистрации*/
-.way-conteiner{
-  width: 100vw;
-  height: 100vh;
-  background-image: url(/img/authorize_reg_bg.jpg);
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.way-conteiner {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/img/authorize_reg_bg.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .way-conteiner__form{
