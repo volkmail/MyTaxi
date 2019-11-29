@@ -27,7 +27,6 @@
                 else if (Model != null && Model.isAuthorize == true && Model.isDriver == true)
                 {
                     <li><a href="/Trips/AwaitingTrips" class="menu_link">Взять заказ</a></li>
-
                 }
                 @if (Model == null || Model.isAuthorize == false)
                 {
@@ -39,6 +38,7 @@
                     <li>
                         <p class="menu__link">@Model.userSurname @Model.userName @Model.userPatronymic</p>
                     </li>
+                    <li><a href="/AuthReg/LogOut" class="menu_link authorize_btn">Выйти</a></li>
                 }
             </ul>
         </div>

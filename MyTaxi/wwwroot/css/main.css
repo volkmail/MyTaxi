@@ -1045,7 +1045,7 @@ html {
     }
 
 .order-body__form-btn-go {
-    margin-bottom: 1vh;
+    margin: 1vh 0;
     border: none;
     border-radius: 50px;
     color: #000;
@@ -1082,6 +1082,13 @@ html {
 
 .order-body__ymap__header {
     color: gold;
+    margin: 1vh 0;
+}
+
+.info_message {
+    color: gold;
+    margin: 0.5vh 0;
+    font-size: 1.25rem;
 }
 
 .create_route_btn {

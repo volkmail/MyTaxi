@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MyTaxi.Models;
 using MyTaxi.Models.ViewModels;
+using Newtonsoft.Json;
 
 namespace MyTaxi.Controllers
 {
@@ -61,6 +62,26 @@ namespace MyTaxi.Controllers
             #endregion
 
             return View(orderData);
+        }
+
+        [HttpPost]
+        public JsonResult GetBaseSumm(string name)
+        {
+            string infoMessage = null;
+            using (var context = new MyTaxiDbContext())
+            {
+                var findResult = context.CarClasses.Where(cc => cc.CarClassName == name).ToList();
+                if (findResult.Count() == 1)
+                {
+                    infoMessage = findResult[0].CarClassBaseTariff.ToString();
+                }
+                else
+                {
+                    infoMessage = "Error";
+                }
+            }
+
+            return Json(new { resultValue = infoMessage});
         }
     }
 }

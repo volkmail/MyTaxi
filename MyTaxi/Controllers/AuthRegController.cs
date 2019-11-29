@@ -184,7 +184,6 @@ namespace MyTaxi.Controllers
             }
             else
             {
-                //TODO: AuthRegController вывод ошибки о том, что не введены никакие данные водителя
                 using (var context = new MyTaxiDbContext())
                 {
                     DriverRegistrationInit dri = new DriverRegistrationInit();
@@ -200,5 +199,10 @@ namespace MyTaxi.Controllers
             }
         }
 
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return Redirect("/Home/Index");
+        }
     }
 }
