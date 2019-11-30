@@ -65,6 +65,51 @@ namespace MyTaxi.Controllers
         }
 
         [HttpPost]
+        public IActionResult AddNewOrder(int mainSumm, string[] addresses)
+        {
+            if (mainSumm.ToString() != "" && addresses != null)
+            {
+                using (var context = new MyTaxiDbContext())
+                {
+                    var findClientResult = context.Clients.Where(d => d.UserID == HttpContext.Session.GetInt32("userID")).ToList();
+
+                    if (findClientResult.Count == 1)
+                    { 
+                        context.Orders.Add(new MyTaxi.Models.Order
+                        {
+                            ClientID = findClientResult[0].ClientID,
+                            OrderSum = mainSumm
+                        });
+
+                        context.SaveChanges();
+
+                        int currentOrderID = context.Orders.Max(o => o.OrderID);
+
+                        for (int i = 0; i < addresses.Length; i++)
+                        {
+                            context.Routes.Add(new Route
+                            {
+                                OrderID = currentOrderID,
+                                Address = addresses[i]
+                            });
+                        }
+
+                        context.History.Add(new Models.History
+                        {
+                            HistoryDate = DateTime.Now,
+                            StatusID = 1,
+                            OrderID = currentOrderID
+                        });
+
+                        context.SaveChanges();
+                    }
+                }
+            }
+
+            return Redirect("/History/History");
+        }
+
+        [HttpPost]
         public JsonResult GetBaseSumm(string name)
         {
             string infoMessage = null;
@@ -81,7 +126,7 @@ namespace MyTaxi.Controllers
                 }
             }
 
-            return Json(new { resultValue = infoMessage});
+            return Json(new { resultValue = infoMessage });
         }
     }
 }

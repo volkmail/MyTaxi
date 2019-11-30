@@ -4,58 +4,43 @@
     ViewData["Title"] = "History";
 }
 <div class="body-history">
-    <div class="body-history__info-block">
-        <div class="body-history__info-block__header">
-            <h3>Поездка №1</h3>
-        </div>
-        <div class="body-history__info-block__body">
-            <div class="body-history_info-block__route">
-                <p>Откуда: ул. Ленина, 50</p>
-                <p>Куда:</p>
-                <p>1. ул.Серышева, 49</p>
-                <p>2. ул. Ленина, 12</p>
-                <p>Сумма поездки: 500р</p>
+    @if (ViewBag.Info != null && ((List<MyTaxi.Models.ViewModels.HistoryInfo>)ViewBag.Info).Count > 0)
+    {
+        @foreach (var info in (List<MyTaxi.Models.ViewModels.HistoryInfo>)ViewBag.Info)
+        {
+            <div class="body-history__info-block">
+                <div class="body-history__info-block__header">
+                    <h3>Заказ №@info.OrderID</h3>
+                </div>
+                <div class="body-history__info-block__body">
+                    <div class="body-history_info-block__route">
+                        <p>Маршрут поездки:</p>
+                        @{
+                            int i = 1;
+                        }
+                        @foreach (var adr in info.Addresses)
+                        {
+                            <p>@i) @adr </p>
+                            i++;
+                        }
+                    </div>
+                    <div class="body-history_info-block__driver-car">
+                        @if (info.DriverFound)
+                        {
+                            <p>Водитель: @info.DriverSurname @info.DriverName @info.DriverPatronymic</p>
+                            <p>Машина: @info.CarNumber @info.CarMark @info.CarModel @info.CarColor</p>
+                        }
+                        else 
+                        {
+                            <p>Идет поиск водителя...</p>
+                        }
+                    </div>
+                </div>
             </div>
-            <div class="body-history_info-block__driver-car">
-                <p>Водитель: Иванов Иван Иванович</p>
-                <p>Машина: Р576ЕГ Белая Toyota Camry</p>
-            </div>
-        </div>
-    </div>
-    <div class="body-history__info-block">
-        <div class="body-history__info-block__header">
-            <h3>Поездка №1</h3>
-        </div>
-        <div class="body-history__info-block__body">
-            <div class="body-history_info-block__route">
-                <p>Откуда: ул. Ленина, 50</p>
-                <p>Куда:</p>
-                <p>1. ул.Серышева, 49</p>
-                <p>2. ул. Ленина, 12</p>
-                <p>Сумма поездки: 500р</p>
-            </div>
-            <div class="body-history_info-block__driver-car">
-                <p>Водитель: Иванов Иван Иванович</p>
-                <p>Машина: Р576ЕГ Белая Toyota Camry</p>
-            </div>
-        </div>
-    </div>
-    <div class="body-history__info-block">
-        <div class="body-history__info-block__header">
-            <h3>Поездка №1</h3>
-        </div>
-        <div class="body-history__info-block__body">
-            <div class="body-history_info-block__route">
-                <p>Откуда: ул. Ленина, 50</p>
-                <p>Куда:</p>
-                <p>1. ул.Серышева, 49</p>
-                <p>2. ул. Ленина, 12</p>
-                <p>Сумма поездки: 500р</p>
-            </div>
-            <div class="body-history_info-block__driver-car">
-                <p>Водитель: Иванов Иван Иванович</p>
-                <p>Машина: Р576ЕГ Белая Toyota Camry</p>
-            </div>
-        </div>
-    </div>
+        }
+    }
+    else
+    {
+        <h3>История поездок пуста!</h3>
+    }
 </div>

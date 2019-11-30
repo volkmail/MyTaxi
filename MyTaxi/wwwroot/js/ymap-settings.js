@@ -19,7 +19,8 @@ let suggest_number = 2,
     current_input_clone = document.getElementById("suggest2").cloneNode(true),
     add_input_btn = document.getElementById("add_input_btn"),
     add_route_btn = document.getElementById("create_route"),
-    car_class_name = document.getElementById("carClassName");
+    car_class_name = document.getElementById("carClassName"),
+    goBtn = document.getElementById("submitBtn");
 
 current_input_clone.id = `${suggest_number + 1}`;
 
@@ -42,8 +43,6 @@ car_class_name.addEventListener("change", function () {
 
     var dataValue = { name: car_class_name.value }
     let summField = document.getElementById("mainSumm");
-
-    //TODO: Добавить автоматический перерасчет стоимости при изменении тарифа.
 
     $.ajax({
         type: "POST",
@@ -75,6 +74,34 @@ car_class_name.addEventListener("change", function () {
 
 }, false);
 
+goBtn.addEventListener("click", function () {
+    let addressesToRequest = new Array();
+
+    inputs.forEach(el => {
+        addressesToRequest[addressesToRequest.length] = el.value;
+    });
+
+    var dataToRequest = { mainSumm: currentMainSummRoute, addresses: addressesToRequest}
+
+    $.ajax({
+        type: "POST",
+        url: "/Order/AddNewOrder",
+        data: dataToRequest,
+        dataType: 'json',
+        async: false,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        }
+        //success: function (result) {
+        //    console.log(result.resultValue); // Скорее всего это не будет нужно
+        //}
+    });
+}, false);
+/*
+ *  1) Список адресов
+ *  2) (ClientID, но это мы возьмем на стороне сервера)
+ *  3) Общая сумма поездки
+ */
 ymaps.ready(function () {
     myMap = new ymaps.Map("map", {
         center: [48.4861, 135.0797],
