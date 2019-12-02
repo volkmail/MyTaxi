@@ -87,7 +87,7 @@ goBtn.addEventListener("click", function () {
         type: "POST",
         url: "/Order/AddNewOrder",
         data: dataToRequest,
-        dataType: 'json',
+        dataType: 'html',
         async: false,
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);

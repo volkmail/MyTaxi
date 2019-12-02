@@ -14,7 +14,7 @@
                 </div>
                 <div class="body-history__info-block__body">
                     <div class="body-history_info-block__route">
-                        <p>Маршрут поездки:</p>
+                        <p class="body-history_info-block__route__list-route">Маршрут поездки:</p>
                         @{
                             int i = 1;
                         }
@@ -23,14 +23,15 @@
                             <p>@i) @adr </p>
                             i++;
                         }
+                        <p class="body-trip_info-block__route__sum">Стоимость поездки: @info.MainSumm₽</p>
                     </div>
                     <div class="body-history_info-block__driver-car">
                         @if (info.DriverFound)
                         {
-                            <p>Водитель: @info.DriverSurname @info.DriverName @info.DriverPatronymic</p>
-                            <p>Машина: @info.CarNumber @info.CarMark @info.CarModel @info.CarColor</p>
+                            <p>За вами приедет @info.DriverSurname @info.DriverName @info.DriverPatronymic</p>
+                            <p>На @info.CarMark @info.CarModel с номером @info.CarNumber цвета @info.CarColor</p>
                         }
-                        else 
+                        else
                         {
                             <p>Идет поиск водителя...</p>
                         }

@@ -65,10 +65,12 @@ namespace MyTaxi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddNewOrder(int mainSumm, string[] addresses)
+        public IActionResult AddNewOrder(int mainSumm, string[] addresses) //TODO: Добавить revers у addresses
         {
             if (mainSumm.ToString() != "" && addresses != null)
             {
+                //Array.Reverse(addresses);
+
                 using (var context = new MyTaxiDbContext())
                 {
                     var findClientResult = context.Clients.Where(d => d.UserID == HttpContext.Session.GetInt32("userID")).ToList();
@@ -105,7 +107,6 @@ namespace MyTaxi.Controllers
                     }
                 }
             }
-
             return Redirect("/History/History");
         }
 

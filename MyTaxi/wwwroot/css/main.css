@@ -29,7 +29,7 @@ html {
     background-image: url("../../img/bg_up_block.jpg");
     background-size: cover;
     position: relative;
-    width:100vw;
+    width:100%;
 }
 
 .main-overlay {
@@ -47,7 +47,7 @@ html {
     height: 12vh;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 2;
     position: relative;
@@ -239,7 +239,7 @@ html {
 .tariffs {
     height: auto;
     min-height: 700px;
-    width:100vw;
+    width:100%;
     background-image: url("../../img/bg_down_block.jpg");
     background-size: cover;
 }
@@ -305,7 +305,7 @@ html {
     align-items: center;
     padding: 10px 10px;
     background-color: rgba(0, 0, 0, 0.8);
-    width: 100vw;
+    width: 100%;
 }
 
     .footer img {
@@ -341,7 +341,7 @@ html {
 /*Блок формы авторизации*/
 
 .form-conteiner {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -470,7 +470,7 @@ html {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     background-image: url(../../img/authorize_reg_bg.jpg);
     background-size: cover;
     /*position: 50% 50%;*/
@@ -608,7 +608,7 @@ html {
     align-items: center;
     background-image: url(/img/authorize_reg_bg.jpg);
     background-size: cover;
-    min-width: 100vw;
+    width: 100%;
     min-height: 100vh;
 }
 
@@ -737,7 +737,7 @@ html {
 }
 /*Страница выбора роли для регистрации*/
 .way-conteiner {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-image: url(/img/authorize_reg_bg.jpg);
     background-size: cover;
@@ -780,7 +780,7 @@ html {
 /*Блок удачной регистрации*/
 
 .suc-conteiner {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -828,12 +828,13 @@ html {
     align-items: center;
     background-image: url(/img/bg_down_block.jpg);
     background-size: cover;
+    width:100%;
 }
 
 .body-history__info-block {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 1.25rem;
     border: 1px solid #000;
     border-radius: 2rem;
@@ -846,7 +847,7 @@ html {
 .body-history__info-block__body {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -866,6 +867,13 @@ html {
     text-shadow: 1px 1px 1px gold;
 }
 
+.body-history_info-block__route__list-route {
+    padding: 0.5rem 0.5rem;
+    margin: 0.2rem 0;
+    color: #000;
+    text-shadow: 1px 1px 1px blue;
+}
+
 .body-history__info-block:hover {
     box-shadow: 0px 0px 10px 2px rgba(204, 204, 223, 0.71);
 }
@@ -880,25 +888,26 @@ html {
     align-items: center;
     background-image: url(/img/bg_down_block.jpg);
     background-size: cover;
+    width:100%;
 }
 
 .body-trip__info-block {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 1.25rem;
     border: 1px solid #000;
     border-radius: 2rem;
     transition: 0.2s;
     background-color: rgba(255, 255, 255, 0.75);
     margin: 10px 10px;
-    width: 50vw;
+    width: 60vw;
 }
 
 .body-trip__info-block__body {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -918,6 +927,20 @@ html {
     text-shadow: 1px 1px 1px gold;
 }
 
+.body-trip_info-block__route_list-header {
+    padding: 0.5rem 0.5rem;
+    margin: 0.2rem 0;
+    color: #000;
+    text-shadow: 1px 1px 1px blue;
+}
+
+.body-trip_info-block__route__sum {
+    padding: 0.5rem 0.5rem;
+    margin: 0.2rem 0;
+    color: #000;
+    text-shadow: 1px 1px 1px red;
+}
+
 .body-trip__info-block:hover {
     box-shadow: 0px 0px 10px 2px rgba(204, 204, 223, 0.71);
 }
@@ -932,8 +955,7 @@ html {
     outline: none;
     cursor: pointer;
     transition: 0.3s;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin: 2vh 2vw;
     padding: 2vh 2vw;
 }
 
@@ -952,6 +974,7 @@ html {
     min-height: 77.5vh;
     background-image: url('../img/order_bg.jpg');
     background-size: cover;
+    width:100%;
 }
 
 .order-body__form {

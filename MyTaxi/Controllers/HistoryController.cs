@@ -52,7 +52,8 @@ namespace MyTaxi.Controllers
                     }
 
                     #region FillMainInfo
-                    var allOrders = context.Orders.Where(o => o.ClientID == HttpContext.Session.GetInt32("userID")).ToList();
+                    int ClientID = context.Clients.Where(c => c.UserID == HttpContext.Session.GetInt32("userID")).FirstOrDefault().ClientID;
+                    var allOrders = context.Orders.Where(o => o.ClientID == ClientID).ToList();
                     if (allOrders.Count > 0)
                     {
                         List<HistoryInfo> historyInfo = new List<HistoryInfo>(allOrders.Count());
@@ -83,7 +84,10 @@ namespace MyTaxi.Controllers
 
                             foreach (var adr in findAdr)
                             {
-                                adrNames.Add(adr.Address);
+                                if (adr.Address != null)
+                                {
+                                    adrNames.Add(adr.Address);
+                                }
                             }
 
                             if (DriverF)
@@ -142,6 +146,7 @@ namespace MyTaxi.Controllers
                                 });
                             }
                         }
+                        historyInfo.Reverse();
                         ViewBag.Info = historyInfo;
                         return View(history);
                         #endregion

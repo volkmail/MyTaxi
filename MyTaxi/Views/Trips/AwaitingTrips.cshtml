@@ -4,55 +4,33 @@
     ViewData["Title"] = "AllTrips";
 }
 <div class="body-trip">
-    <div class="body-trip__info-block">
-        <div class="body-trip__info-block__header">
-            <h3>Поездка №1</h3>
-        </div>
-        <div class="body-trip__info-block__body">
-            <div class="body-trip_info-block__route">
-                <p>Откуда: ул. Ленина, 50</p>
-                <p>Куда:</p>
-                <p>1. ул.Серышева, 49</p>
-                <p>2. ул. Ленина, 12</p>
-                <p>Сумма поездки: 500р</p>
+    @if (ViewBag.InfoTrip != null && ((List<MyTaxi.Models.ViewModels.TripInfo>)ViewBag.InfoTrip).Count > 0)
+    {
+        @foreach (var info in (List<MyTaxi.Models.ViewModels.TripInfo>)ViewBag.InfoTrip)
+        {
+            <div class="body-trip__info-block">
+                <div class="body-trip__info-block__header">
+                    <h3>Заказ №@info.OrderID</h3>
+                </div>
+                <div class="body-trip__info-block__body">
+                    @{
+                        int i = 1;
+                    }
+                    <div class="body-trip_info-block__route">
+                        <p class="body-trip_info-block__route_list-header">Маршрут поездки:</p>
+                        @foreach (var adr in info.Addresses)
+                        {
+                            <p>@i)@adr</p>
+                            i++;
+                        }
+                        <p class="body-trip_info-block__route__sum">Сумма поездки: @info.MainSumm₽</p>
+                    </div>
+                    <div class="body-trip_info-block__btn">
+                        <a href="#" class="body-trip_info-block__btn__go">Взять заказ!</a> <!--В URL будем записывать id заказа-->
+                    </div>
+                </div>
             </div>
-            <div class="body-trip_info-block__btn">
-                <a href="#" class="body-trip_info-block__btn__go">Взять поездку!</a>
-            </div>
-        </div>
-    </div>
-    <div class="body-trip__info-block">
-        <div class="body-trip__info-block__header">
-            <h3>Поездка №1</h3>
-        </div>
-        <div class="body-trip__info-block__body">
-            <div class="body-trip_info-block__route">
-                <p>Откуда: ул. Ленина, 50</p>
-                <p>Куда:</p>
-                <p>1. ул.Серышева, 49</p>
-                <p>2. ул. Ленина, 12</p>
-                <p>Сумма поездки: 500р</p>
-            </div>
-            <div class="body-trip_info-block__btn">
-                <a href="#" class="body-trip_info-block__btn__go">Взять поездку!</a>
-            </div>
-        </div>
-    </div>
-    <div class="body-trip__info-block">
-        <div class="body-trip__info-block__header">
-            <h3>Поездка №1</h3>
-        </div>
-        <div class="body-trip__info-block__body">
-            <div class="body-trip_info-block__route">
-                <p>Откуда: ул. Ленина, 50</p>
-                <p>Куда:</p>
-                <p>1. ул.Серышева, 49</p>
-                <p>2. ул. Ленина, 12</p>
-                <p>Сумма поездки: 500р</p>
-            </div>
-            <div class="body-trip_info-block__btn">
-                <a href="#" class="body-trip_info-block__btn__go">Взять поездку!</a>
-            </div>
-        </div>
-    </div>
+
+        }
+    }
 </div>

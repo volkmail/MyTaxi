@@ -56,7 +56,7 @@
                 <li><a href="/Trips/AwaitingTrips" class="m-menu_link">Взять заказ</a></li>
 
             }
-            @if (Model == null || Model.isAuthorize ==false)
+            @if (Model == null || Model.isAuthorize == false)
             {
                 <li><a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a></li>
                 <li><a href="/AuthReg/RegistrationWay" class="menu_link authorize_btn">Регистрация</a></li>
@@ -91,7 +91,10 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
     <script src="~/js/m-menu.js"></script>
     @RenderSection("Scripts", false)
 </body>

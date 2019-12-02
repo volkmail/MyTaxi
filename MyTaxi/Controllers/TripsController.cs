@@ -17,7 +17,7 @@ namespace MyTaxi.Controllers
         {
             AllTrips allTrips = new AllTrips();
 
-            #region Fill User Data
+            #region Fill User Data & TripsInfo
 
             if (HttpContext.Session.TryGetValue("userID", out byte[] result))
             {
@@ -50,6 +50,56 @@ namespace MyTaxi.Controllers
                             allTrips.userPatronymic = dataToDictionaryClient[0].ClientPatronymic;
                         }
                     }
+
+                    #region TripsInfo
+
+
+                    var allOrders = context.Orders.ToList();
+                    
+                    if (allOrders.Any())
+                    {
+                        List<TripInfo> tripInfo = new List<TripInfo>();
+
+                        for (int i = 0; i < allOrders.Count; i++)
+                        {
+                            var queryRoutes = context.Routes.Where(r => r.OrderID == allOrders[i].OrderID).ToList();
+                            List<string> adrNames = new List<string>();
+
+                            foreach (var adr in queryRoutes)
+                            {
+                                if (adr.Address != null)
+                                {
+                                    adrNames.Add(adr.Address);
+                                }
+                            }
+
+                            var queryHistory = context.History.Where(h => h.OrderID == allOrders[i].OrderID).ToList();
+                            List <Tuple<int, string>> statusesCurrentOrder = new List<Tuple<int, string>>();
+
+                            foreach (var st in queryHistory)
+                            {
+                                statusesCurrentOrder.Add(new Tuple<int, string>(st.StatusID,
+                                    context.Statuses.Where(s => s.StatusID == st.StatusID).FirstOrDefault().StatusName));
+                            }
+
+                            if (statusesCurrentOrder.OrderBy(stco => stco.Item1).Where(stco => stco.Item1 > 1).Any())
+                            {
+                                continue; // Если есть статус выше чем 1 - "Поиск водителя", то мы не выводим этот заказ для водителя
+                            }
+
+                            tripInfo.Add(new TripInfo
+                            {
+                                OrderID = allOrders[i].OrderID.ToString(),
+                                Addresses = adrNames,
+                                MainSumm = allOrders[i].OrderSum.ToString()
+                            });
+                        }
+                        tripInfo.Reverse();
+                        ViewBag.InfoTrip = tripInfo;
+                        return View(allTrips);
+                    }
+
+                    #endregion
                 }
             }
             else
