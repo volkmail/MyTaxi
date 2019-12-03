@@ -71,13 +71,13 @@ html {
 }
 
     .menu ul li p {
-        color: aliceblue;
         font-size: 1.25rem;
     }
 
 /* Выплывающее меню начало */
 
 .m-menu {
+    color: aliceblue;
     margin: 0;
     padding: 0;
     position: fixed;
@@ -98,6 +98,10 @@ html {
     z-index: 5;
     transition: 0.3s;
     transform: translateX(100%);
+}
+
+.user_name {
+    color:gold;
 }
 
 .m-menu_active {
@@ -1136,3 +1140,100 @@ html {
         padding: 0;
         margin: 0;
     }
+
+    /*Блок текущей поездки*/
+
+.trip-body {
+    min-height: 77.5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(../img/currentTrip.jpg);
+    background-size: cover;
+}
+
+.trip-body__block-info__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 100px;
+    margin: 2vh 3vw;
+    box-shadow: 0px 0px 10px 2px rgba(204, 204, 223, 0.71);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.trip-body__block-info__form__header {
+    font-size: 1.6rem;
+    color: gold;
+    text-shadow: black 1px 1px 1px;
+}
+
+.trip-body__block-info__form__btn {
+    border: 1px solid #000;
+    border-radius: 50px;
+    font-size: 1.25rem;
+    background-color: gold;
+    margin: 1vh 2vw;
+    outline: none;
+    padding: 0.5vh 0.5vw;
+}
+
+    .trip-body__block-info__form__btn:hover,
+    .trip-body__block-info__form__btn:focus {
+        cursor: pointer;
+        background-color: rgba(255, 215, 0, 0.7);
+    }
+
+.trip-body__block-info__form__sum {
+    font-size: 1.25rem;
+    color: gold;
+}
+
+.trip-body__routes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh 3vw;
+    min-height: 50vh;
+    max-width: 55vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 10px 2px rgba(204, 204, 223, 0.71);
+    border-radius: 50px;
+    padding: 0 1.5vw;
+}
+
+.trip-body__routes__header h2 {
+    color: gold;
+    text-shadow: black 1px 1px 1px;
+    font-size: 1.7rem;
+    margin-top: 1vh;
+}
+
+.trip-body__routes__ymap {
+    height: 45vh;
+    width: 40vw;
+    margin: 1.5vh 1vw;
+}
+
+.trip-body__routes__list {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 35vw;
+}
+
+    .trip-body__routes__list ul li {
+        list-style: none;
+    }
+
+.trip-body__routes__list__address {
+    list-style: none;
+    font-size: 1.45rem;
+    color: gold;
+    margin: 1vh 0;
+}

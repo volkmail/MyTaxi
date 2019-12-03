@@ -55,7 +55,7 @@ namespace MyTaxi.Controllers
 
 
                     var allOrders = context.Orders.ToList();
-                    
+
                     if (allOrders.Any())
                     {
                         List<TripInfo> tripInfo = new List<TripInfo>();
@@ -74,7 +74,7 @@ namespace MyTaxi.Controllers
                             }
 
                             var queryHistory = context.History.Where(h => h.OrderID == allOrders[i].OrderID).ToList();
-                            List <Tuple<int, string>> statusesCurrentOrder = new List<Tuple<int, string>>();
+                            List<Tuple<int, string>> statusesCurrentOrder = new List<Tuple<int, string>>();
 
                             foreach (var st in queryHistory)
                             {
@@ -95,6 +95,101 @@ namespace MyTaxi.Controllers
                             });
                         }
                         tripInfo.Reverse();
+                        ViewBag.InfoTrip = tripInfo;
+                        return View(allTrips);
+                    }
+
+                    #endregion
+                }
+            }
+            else
+            {
+                allTrips.isAuthorize = false;
+            }
+            #endregion
+
+            return View(allTrips);
+        }
+
+        public IActionResult CurrentTrip(int id) // id - OrderID
+        {
+            AllTrips allTrips = new AllTrips();
+
+            #region Fill User Data & TripsInfo
+
+            if (HttpContext.Session.TryGetValue("userID", out byte[] result))
+            {
+                using (var context = new MyTaxiDbContext())
+                {
+                    List<Driver> dataToDictionaryDriver;
+                    List<Client> dataToDictionaryClient;
+
+                    if (HttpContext.Session.GetInt32("isDriver") == 1)
+                    {
+                        dataToDictionaryDriver = context.Drivers.Where(d => d.UserID == HttpContext.Session.GetInt32("userID")).ToList();
+                        if (dataToDictionaryDriver.Count() == 1)
+                        {
+                            allTrips.isAuthorize = true;
+                            allTrips.isDriver = true;
+                            allTrips.userName = dataToDictionaryDriver[0].DriverName;
+                            allTrips.userSurname = dataToDictionaryDriver[0].DriverSurname;
+                            allTrips.userPatronymic = dataToDictionaryDriver[0].DriverPatronymic;
+                        }
+                    }
+                    else
+                    {
+                        dataToDictionaryClient = context.Clients.Where(d => d.UserID == HttpContext.Session.GetInt32("userID")).ToList();
+                        if (dataToDictionaryClient.Count() == 1)
+                        {
+                            allTrips.isAuthorize = true;
+                            allTrips.isDriver = false;
+                            allTrips.userName = dataToDictionaryClient[0].ClientName;
+                            allTrips.userSurname = dataToDictionaryClient[0].ClientSurname;
+                            allTrips.userPatronymic = dataToDictionaryClient[0].ClientPatronymic;
+                        }
+                    }
+
+                    #region TripsInfo
+
+
+                    var currentOrder = context.Orders.Where(o => o.OrderID == id).FirstOrDefault();
+
+                    if (currentOrder != null)
+                    {
+                        TripInfo tripInfo;
+
+                        var queryRoutes = context.Routes.Where(r => r.OrderID == currentOrder.OrderID).ToList();
+                        List<string> adrNames = new List<string>();
+
+                        foreach (var adr in queryRoutes)
+                        {
+                            if (adr.Address != null)
+                            {
+                                adrNames.Add(adr.Address);
+                            }
+                        }
+
+                        //TODO: Автоматически добавить сатус, что водитель в пути
+
+                        var maxStatusForOrder = context.History.Where(h => h.OrderID == currentOrder.OrderID).Max(h => h.StatusID);
+                        var statusesCurrentOrder = context.Statuses.Where(s => s.StatusID > maxStatusForOrder).ToArray();
+
+                        tripInfo = new TripInfo
+                        {
+                            OrderID = currentOrder.OrderID.ToString(),
+                            Addresses = adrNames,
+                            MainSumm = currentOrder.OrderSum.ToString(),
+                        };
+
+                        string statusesForCookie = String.Empty;
+                        foreach (var s in statusesCurrentOrder)
+                        {
+                            statusesForCookie = statusesForCookie + s.StatusID.ToString()+"0"+s.StatusName+"1";
+                        }
+
+                        statusesForCookie = statusesForCookie.Remove(statusesForCookie.Length - 1).ToString();
+
+                        HttpContext.Response.Cookies.Append("Statuses", statusesForCookie);
                         ViewBag.InfoTrip = tripInfo;
                         return View(allTrips);
                     }

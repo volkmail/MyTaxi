@@ -65,7 +65,7 @@ namespace MyTaxi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddNewOrder(int mainSumm, string[] addresses) //TODO: Добавить revers у addresses
+        public string AddNewOrder(int mainSumm, string[] addresses)
         {
             if (mainSumm.ToString() != "" && addresses != null)
             {
@@ -107,7 +107,7 @@ namespace MyTaxi.Controllers
                     }
                 }
             }
-            return Redirect("/History/History");
+            return null;
         }
 
         [HttpPost]

@@ -1,5 +1,3 @@
-//TODO: Реализовать добавление в базу поездки.
-
 let myMap,
     multiRoute,
     allIsCorrect = false,
@@ -87,21 +85,17 @@ goBtn.addEventListener("click", function () {
         type: "POST",
         url: "/Order/AddNewOrder",
         data: dataToRequest,
-        dataType: 'html',
+        dataType: "text",
         async: false,
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+        success: function (result) {
+            window.location="/History/History";
         }
-        //success: function (result) {
-        //    console.log(result.resultValue); // Скорее всего это не будет нужно
-        //}
     });
 }, false);
-/*
- *  1) Список адресов
- *  2) (ClientID, но это мы возьмем на стороне сервера)
- *  3) Общая сумма поездки
- */
+
 ymaps.ready(function () {
     myMap = new ymaps.Map("map", {
         center: [48.4861, 135.0797],
@@ -229,7 +223,8 @@ function init_route(elements_with_streets) {
 
         multiRoute.model.events.add('requestsuccess', function () {
             var activeRoute = multiRoute.getActiveRoute();
-            currentLengthRoute = Number(activeRoute.properties.get("distance").text.replace(/\D+/g, ""))
+            clr = activeRoute.properties.get("distance").text;
+            currentLengthRoute = Number(activeRoute.properties.get("distance").text.replace(/\D+/g, ""));
             currentTimeRoute = activeRoute.properties.get("duration").text;
 
             let summField = document.getElementById("mainSumm");

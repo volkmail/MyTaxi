@@ -146,6 +146,7 @@ namespace MyTaxi.Controllers
                                 });
                             }
                         }
+                        HttpContext.Response.Cookies.Append("name","Aleksei"); // Для примера 
                         historyInfo.Reverse();
                         ViewBag.Info = historyInfo;
                         return View(history);

@@ -64,7 +64,7 @@ namespace MyTaxi
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action}",
+                    template: "{controller}/{action}/{id?}",
                     defaults: new { controller = "Home", action = "Index" });
             });
         }

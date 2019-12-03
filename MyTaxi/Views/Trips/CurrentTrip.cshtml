@@ -1,0 +1,42 @@
+﻿@using MyTaxi.Models.ViewModels
+@model MyTaxi.Models.ViewModels.AllTrips
+@{
+    ViewData["Title"] = "CurrentTrip";
+}
+<div class="trip-body">
+    @if (ViewBag.InfoTrip != null)
+    {
+        <form class="trip-body__block-info__form">
+            <h3 class="trip-body__block-info__form__header">Заказ №@ViewBag.InfoTrip.OrderID</h3>
+            <input type="button"
+                   id="change_status_btn"
+                   value=""
+                   class="trip-body__block-info__form__btn" />
+            <p class="trip-body__block-info__form__sum">Стоимость: @ViewBag.InfoTrip.MainSumm₽</p>
+        </form>
+        <div class="trip-body__routes">
+            <div class="trip-body__routes__header">
+                <h2>Маршрут поездки</h2>
+            </div>
+            <div class="trip-body__routes__ymap" id="map"></div>
+            <div class="trip-body__routes__list">
+                <ul>
+                    @{int i = 1;}
+                    @foreach (var adr in @ViewBag.InfoTrip.Addresses)
+                    {
+
+                        <li><p class="trip-body__routes__list__address">@i) @adr</p></li>
+                        i++;
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts
+{
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=a969108c-0581-4865-bc8b-54dd2d43832c&lang=ru_RU"
+            type="text/javascript"></script>
+    <script src="~/js/js.cookie-2.2.1.min.js"></script>
+    <script src="~/js/currentTrip.js"></script>
+}

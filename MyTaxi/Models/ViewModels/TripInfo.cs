@@ -10,7 +10,6 @@ namespace MyTaxi.Models.ViewModels
         public string OrderID { get; set; }
         public List<string> Addresses { get; set; }
         public string MainSumm { get; set; }
-
-        // public List<string> Statuses { get; set; } пока не обязательно нужно
+        //public string[] Statuses { get; set; }
     }
 }
