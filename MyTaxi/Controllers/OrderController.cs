@@ -69,7 +69,10 @@ namespace MyTaxi.Controllers
         {
             if (mainSumm.ToString() != "" && addresses != null)
             {
-                //Array.Reverse(addresses);
+                if (addresses.Length == 2)
+                {
+                    Array.Reverse(addresses);
+                }
 
                 using (var context = new MyTaxiDbContext())
                 {
@@ -98,7 +101,7 @@ namespace MyTaxi.Controllers
 
                         context.History.Add(new Models.History
                         {
-                            HistoryDate = DateTime.Now,
+                            HistoryDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm"),
                             StatusID = 1,
                             OrderID = currentOrderID
                         });

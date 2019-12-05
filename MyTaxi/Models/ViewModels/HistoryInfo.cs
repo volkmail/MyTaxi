@@ -9,7 +9,7 @@ namespace MyTaxi.Models.ViewModels
     {
         public string OrderID { get; set; }
         public List<String> Addresses { get; set; }
-        public List<String> Statuses { get; set; }
+        public List<Tuple<Status,string>> Statuses { get; set; }
         public bool DriverFound { get; set; } = false;
         public string DriverName { get; set; }
         public string DriverSurname { get; set; }

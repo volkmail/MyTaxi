@@ -26,7 +26,14 @@
                         <p class="body-trip_info-block__route__sum">Сумма поездки: @info.MainSumm₽</p>
                     </div>
                     <div class="body-trip_info-block__btn">
-                        <a href="/Trips/CurrentTrip/@info.OrderID" class="body-trip_info-block__btn__go">Взять поездку!</a>
+                        @if (ViewData["Continue"] != null)
+                        {
+                            <a href="/Trips/CurrentTrip/@info.OrderID" class="body-trip_info-block__btn__go">@ViewData["Continue"]</a>
+                        }
+                        else
+                        {
+                            <a href="/Trips/CurrentTrip/@info.OrderID" class="body-trip_info-block__btn__go">Взять поездку!</a>
+                        }
                     </div>
                 </div>
             </div>

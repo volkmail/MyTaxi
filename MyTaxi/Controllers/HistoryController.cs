@@ -63,14 +63,15 @@ namespace MyTaxi.Controllers
                             List<String> adrNames = new List<string>();
 
                             var queryHistory = context.History.Where(h => h.OrderID == allOrders[i].OrderID).ToList();
-                            List<String> statuses = new List<string>();
+                            List<Tuple<Status, string>> statuses = new List<Tuple<Status, string>>();
                             List<int> statusesId = new List<int>();
                             bool DriverF = false;
 
                             foreach (var st in queryHistory)
                             {
                                 statusesId.Add(st.StatusID);
-                                statuses.Add(context.Statuses.Where(s => s.StatusID == st.StatusID).FirstOrDefault().StatusName);
+                                statuses.Add(new Tuple<Status, string>(context.Statuses.Where(s => s.StatusID == st.StatusID).FirstOrDefault(),
+                                    st.HistoryDate));
                             }
 
                             foreach (var si in statusesId)

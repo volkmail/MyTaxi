@@ -100,9 +100,13 @@ html {
     transform: translateX(100%);
 }
 
-.user_name {
-    color:gold;
+.m-menu ul li{
+    list-style:none;
 }
+
+    .user_name {
+        color: gold;
+    }
 
 .m-menu_active {
     transform: translateX(0%);
@@ -124,6 +128,7 @@ html {
 
 .m-menu_link {
     text-decoration: none;
+    list-style: none;
     font-size: 3rem;
     line-height: 7rem;
     color: #000;
@@ -845,7 +850,7 @@ html {
     transition: 0.2s;
     background-color: rgba(255, 255, 255, 0.75);
     margin: 10px 10px;
-    width: 50vw;
+    width: 80vw;
 }
 
 .body-history__info-block__body {
@@ -905,7 +910,7 @@ html {
     transition: 0.2s;
     background-color: rgba(255, 255, 255, 0.75);
     margin: 10px 10px;
-    width: 60vw;
+    width: 80vw;
 }
 
 .body-trip__info-block__body {
@@ -960,7 +965,7 @@ html {
     cursor: pointer;
     transition: 0.3s;
     margin: 2vh 2vw;
-    padding: 2vh 2vw;
+    padding: 1vh 1vw;
 }
 
     .body-trip_info-block__btn__go:hover,

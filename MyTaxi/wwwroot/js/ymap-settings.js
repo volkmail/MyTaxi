@@ -199,7 +199,7 @@ function init_route(elements_with_streets) {
     });
 
     if (myReferncePoints.length > 1 && allIsCorrect) {
-        if (multiRoute) {
+        if (multiRoute != null) {
             myMap.geoObjects.remove(multiRoute);
             multiRoute = null;
             currentLengthRoute = null;
@@ -209,17 +209,14 @@ function init_route(elements_with_streets) {
         multiRoute = new ymaps.multiRouter.MultiRoute({
             referencePoints: myReferncePoints,
             params: {
-                //avoidTrafficJams: true, учесть пробки
                 routingMode: "auto"
             }
         }, {
-            routeStrokeStyle: "none",
-            routeActiveStrokeStyle: "solid",
+            //routeStrokeStyle: "none",
+            //routeActiveStrokeStyle: "solid",
             routeActiveStrokeColor: "#2b50c8",
-            boundsAutoApply: true //Атвомат. границы, для отображения всего маршрута
+            boundsAutoApply: true
         });
-
-        myMap.geoObjects.add(multiRoute);
 
         multiRoute.model.events.add('requestsuccess', function () {
             var activeRoute = multiRoute.getActiveRoute();
@@ -248,6 +245,8 @@ function init_route(elements_with_streets) {
             }
 
         });
+
+        myMap.geoObjects.add(multiRoute);
     }
     else {
         alert("Недостаточно точек для построения маршрута (необходимо минимум 2)! Или адреса указаны с ошибкой!");

@@ -12,7 +12,7 @@ namespace MyTaxi.Models
     {
         [Key]
         public int HistoryID { get; set; }
-        public DateTime HistoryDate { get; set; }
+        public string HistoryDate { get; set; }
         public int StatusID { get; set; }
         public Status Status { get; set; }
         public int OrderID{get; set;}

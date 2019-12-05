@@ -58,8 +58,12 @@
             }
             @if (Model == null || Model.isAuthorize == false)
             {
-                <li><a href="/AuthReg/Authorization" class="menu_link authorize_btn">Вход</a></li>
-                <li><a href="/AuthReg/RegistrationWay" class="menu_link authorize_btn">Регистрация</a></li>
+                <li><a href="/AuthReg/Authorization" class="m-menu_link">Вход</a></li>
+                <li><a href="/AuthReg/RegistrationWay" class="m-menu_link">Регистрация</a></li>
+            }
+            else
+            {
+                <li><a href="/AuthReg/LogOut" class="m-menu_link">Выйти</a></li>
             }
         </ul>
     </div>

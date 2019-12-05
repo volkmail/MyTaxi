@@ -55,6 +55,7 @@ namespace MyTaxi.Controllers
 
 
                     var allOrders = context.Orders.ToList();
+                    int currentOrderID = -1;
 
                     if (allOrders.Any())
                     {
@@ -74,6 +75,12 @@ namespace MyTaxi.Controllers
                             }
 
                             var queryHistory = context.History.Where(h => h.OrderID == allOrders[i].OrderID).ToList();
+
+                            if (queryHistory.Max(qh => qh.StatusID) == 7)
+                            {
+                                continue;
+                            }
+
                             List<Tuple<int, string>> statusesCurrentOrder = new List<Tuple<int, string>>();
 
                             foreach (var st in queryHistory)
@@ -82,9 +89,28 @@ namespace MyTaxi.Controllers
                                     context.Statuses.Where(s => s.StatusID == st.StatusID).FirstOrDefault().StatusName));
                             }
 
-                            if (statusesCurrentOrder.OrderBy(stco => stco.Item1).Where(stco => stco.Item1 > 1).Any())
+                            var queryDriver = context.Drivers.Where(d => d.UserID == HttpContext.Session.GetInt32("userID")).FirstOrDefault();
+
+                            //Ограничиваем водителя одним заказом, пока он не завершиться
+                            if (allOrders[i].DriverID != null && allOrders[i].DriverID == queryDriver.DriverID)
                             {
-                                continue; // Если есть статус выше чем 1 - "Поиск водителя", то мы не выводим этот заказ для водителя
+                                currentOrderID = allOrders[i].OrderID;
+                                tripInfo.Clear();
+                                tripInfo.Add(new TripInfo
+                                {
+                                    OrderID = allOrders[i].OrderID.ToString(),
+                                    Addresses = adrNames,
+                                    MainSumm = allOrders[i].OrderSum.ToString()
+                                });
+                                ViewData["Continue"] = "Вернуться к поездке";
+                                ViewBag.InfoTrip = tripInfo;
+                                return View(allTrips);
+                            }
+
+                            // Если заказ закрпелен за водителем, то для других его не выводим
+                            if (allOrders[i].DriverID != null && allOrders[i].DriverID != queryDriver.DriverID)
+                            {
+                                continue; 
                             }
 
                             tripInfo.Add(new TripInfo
@@ -95,6 +121,10 @@ namespace MyTaxi.Controllers
                             });
                         }
                         tripInfo.Reverse();
+                        if (currentOrderID != -1)
+                        {
+                            tripInfo = tripInfo.Where(ti => int.Parse(ti.OrderID) == currentOrderID).ToList();
+                        }
                         ViewBag.InfoTrip = tripInfo;
                         return View(allTrips);
                     }
@@ -151,7 +181,6 @@ namespace MyTaxi.Controllers
 
                     #region TripsInfo
 
-
                     var currentOrder = context.Orders.Where(o => o.OrderID == id).FirstOrDefault();
 
                     if (currentOrder != null)
@@ -169,7 +198,21 @@ namespace MyTaxi.Controllers
                             }
                         }
 
-                        //TODO: Автоматически добавить сатус, что водитель в пути
+                        context.History.Add(new Models.History
+                        {
+                            OrderID = id,
+                            StatusID = 2,
+                            HistoryDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm")
+                        });
+
+                        if (currentOrder.DriverID == null)
+                        {
+                            var queryDriver = context.Drivers.Where(d => d.UserID == HttpContext.Session.GetInt32("userID")).FirstOrDefault();
+                            currentOrder.DriverID = queryDriver.DriverID;
+                        }
+
+                        context.SaveChanges();
+                        //TODO: Убрать кнопку "Взять поездку" при наличии 7 статуса
 
                         var maxStatusForOrder = context.History.Where(h => h.OrderID == currentOrder.OrderID).Max(h => h.StatusID);
                         var statusesCurrentOrder = context.Statuses.Where(s => s.StatusID > maxStatusForOrder).ToArray();
@@ -184,7 +227,7 @@ namespace MyTaxi.Controllers
                         string statusesForCookie = String.Empty;
                         foreach (var s in statusesCurrentOrder)
                         {
-                            statusesForCookie = statusesForCookie + s.StatusID.ToString()+"0"+s.StatusName+"1";
+                            statusesForCookie = statusesForCookie + s.StatusID.ToString() + "0" + s.StatusName + "1";
                         }
 
                         statusesForCookie = statusesForCookie.Remove(statusesForCookie.Length - 1).ToString();
@@ -204,6 +247,32 @@ namespace MyTaxi.Controllers
             #endregion
 
             return View(allTrips);
+        }
+
+        [HttpPost]
+        public string SetStatus(int statusId, int orderId)
+        {
+            string result = String.Empty;
+
+            if (statusId.ToString() != null)
+            {
+                using (var context = new MyTaxiDbContext())
+                {
+                    context.History.Add(new Models.History
+                    {
+                        OrderID = orderId,
+                        StatusID = statusId,
+                        HistoryDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm")
+                    });
+
+                    context.SaveChanges();
+
+                    result = "Success";
+                }
+            }
+            else
+                result = "NullId";
+            return result;
         }
     }
 }

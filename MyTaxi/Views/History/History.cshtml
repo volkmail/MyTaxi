@@ -24,8 +24,6 @@
                             i++;
                         }
                         <p class="body-trip_info-block__route__sum">Стоимость поездки: @info.MainSumm₽</p>
-                    </div>
-                    <div class="body-history_info-block__driver-car">
                         @if (info.DriverFound)
                         {
                             <p>Водитель @info.DriverSurname @info.DriverName @info.DriverPatronymic</p>
@@ -34,6 +32,15 @@
                         else
                         {
                             <p>Идет поиск водителя...</p>
+                        }
+                    </div>
+                    <div class="body-history_info-block__driver-car">
+                        <p>История поездки:</p>
+                        @{ i = 1;}
+                        @foreach (var status in info.Statuses)
+                        {
+                            <p>@i) @status.Item1.StatusName @status.Item2 </p>
+                            i++;
                         }
                     </div>
                 </div>

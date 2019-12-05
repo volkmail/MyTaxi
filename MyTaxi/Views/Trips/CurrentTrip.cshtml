@@ -7,7 +7,7 @@
     @if (ViewBag.InfoTrip != null)
     {
         <form class="trip-body__block-info__form">
-            <h3 class="trip-body__block-info__form__header">Заказ №@ViewBag.InfoTrip.OrderID</h3>
+            <h3 id="OrderID" class="trip-body__block-info__form__header">Заказ №@ViewBag.InfoTrip.OrderID</h3>
             <input type="button"
                    id="change_status_btn"
                    value=""
